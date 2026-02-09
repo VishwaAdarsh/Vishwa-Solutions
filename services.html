@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Vishwa Solutions</title>
+    <meta name="description"
+        content="Explore our services: Home furniture, Office interiors, Aluminium work, and Renovation projects.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .service-detail-section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-detail-sontent {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .service-detail-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-detail-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .service-detail-image img {
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .service-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-list li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bed"></i> Vishwa Solutions
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="color: white; padding: 8px 16px;">Enquiry</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="background-color: var(--secondary-color); padding: 60px 0;">
+        <div class="container text-center">
+            <h1 class="reveal">Our Services</h1>
+            <p class="reveal" style="font-size: 1.1rem; color: var(--text-light);">Comprehensive Solutions for All Your
+                Furniture Needs
+            </p>
+        </div>
+    </section>
+
+    <!-- Home Furniture -->
+    <section id="home" class="service-detail-section">
+        <div class="container">
+            <div class="service-detail-sontent">
+                <div class="service-detail-image reveal">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9tZSUyMGZ1cm5pdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="Home Furniture">
+                </div>
+                <div class="service-detail-text reveal">
+                    <h2>Home Furniture</h2>
+                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                        Transform your house into a home with our custom-made wooden furniture. We design pieces that
+                        blend functionality with elegance, making perfect use of every inch of space.
+                    </p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Custom King & Queen Size Beds</li>
+                        <li><i class="fa-solid fa-check"></i> Floor-to-Ceiling Wardrobes & Lofts</li>
+                        <li><i class="fa-solid fa-check"></i> Modular Kitchen Cabinets</li>
+                        <li><i class="fa-solid fa-check"></i> TV Units & Wall Paneling</li>
+                        <li><i class="fa-solid fa-check"></i> Wooden Doors & Frames</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Furniture -->
+    <section id="office" class="service-detail-section" style="background-color: var(--background-light);">
+        <div class="container">
+            <div class="service-detail-sontent" style="flex-direction: row-reverse;">
+                <div class="service-detail-image reveal">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&auto=format&fit=crop&q=60"
+                        alt="Office Furniture">
+                </div>
+                <div class="service-detail-text reveal">
+                    <h2>Office Furniture</h2>
+                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                        Create a professional and productive environment with our office interior solutions. We provide
+                        sturdy, long-lasting, and ergonomic furniture for modern workspaces.
+                    </p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Modular Workstations & Desks</li>
+                        <li><i class="fa-solid fa-check"></i> Executive Cabin Furniture</li>
+                        <li><i class="fa-solid fa-check"></i> Conference Tables</li>
+                        <li><i class="fa-solid fa-check"></i> File Stroage & Cabinets</li>
+                        <li><i class="fa-solid fa-check"></i> Reception Areas</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aluminium Work -->
+    <section id="aluminium" class="service-detail-section">
+        <div class="container">
+            <div class="service-detail-sontent">
+                <div class="service-detail-image reveal">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&auto=format&fit=crop&q=60"
+                        alt="Aluminium Windows">
+                </div>
+                <div class="service-detail-text reveal">
+                    <h2>Aluminium Work</h2>
+                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                        We specialize in high-quality aluminium fabrication for homes and offices. Our aluminium
+                        solutions are durable, rust-free, and sleek.
+                    </p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Aluminium Sliding Windows</li>
+                        <li><i class="fa-solid fa-check"></i> Office Glass Partitions with Aluminium Frames</li>
+                        <li><i class="fa-solid fa-check"></i> Bathroom Doors & Vents</li>
+                        <li><i class="fa-solid fa-check"></i> Shop Fronts & Showroom Glazing</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renovation -->
+    <section id="renovation" class="service-detail-section" style="background-color: var(--background-light);">
+        <div class="container">
+            <div class="service-detail-sontent" style="flex-direction: row-reverse;">
+                <div class="service-detail-image reveal">
+                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800&auto=format&fit=crop&q=60"
+                        alt="Renovation Work">
+                </div>
+                <div class="service-detail-text reveal">
+                    <h2>Renovation & Custom Work</h2>
+                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                        Don't throw away good wood! We help you renovate and repurpose your old furniture. We also
+                        undertake complete property renovation projects.
+                    </p>
+                    <ul class="service-list">
+                        <li><i class="fa-solid fa-check"></i> Old Furniture Repair & Polish</li>
+                        <li><i class="fa-solid fa-check"></i> Sofa Repair & Reupholstery</li>
+                        <li><i class="fa-solid fa-check"></i> Complete Room Redesign</li>
+                        <li><i class="fa-solid fa-check"></i> Structural Carpentry Repairs</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Vishwa Solutions</h4>
+                    <p style="color: #ccc; line-height: 1.6;">Your trusted partner for all carpentry and furniture
+                        needs. Bringing quality craftsmanship to your home and office.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html#home">Home Furniture</a></li>
+                        <li><a href="services.html#office">Office Interiors</a></li>
+                        <li><a href="services.html#aluminium">Aluminium Work</a></li>
+                        <li><a href="services.html#renovation">Renovation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 9819215853
+                        </li>
+                        <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> +91 9819215853</li>
+                        <li><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> ramlakhan1775@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Andheri(E),Mumbai, India
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Vishwakarma Furniture Works. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+
+    <a href="https://wa.me/9819215853" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

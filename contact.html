@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Vishwa Solutions</title>
+    <meta name="description"
+        content="Get in touch with us for your furniture and renovation needs. Call, WhatsApp, or visit us.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background: var(--primary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            margin-top: 5px;
+            color: var(--secondary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    </style>
+
+    <style>
+        /* ================================
+   CONTACT SECTION STYLES
+================================ */
+
+        /* Wrapper layout */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: #f7f5dc;
+            /* light cream background */
+            padding: 40px;
+            border-radius: 18px;
+        }
+
+        /* Left info panel */
+        .contact-info {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Individual contact cards */
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            background: #fafafa;
+            padding: 16px 18px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect */
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Icons */
+        .contact-card i {
+            font-size: 20px;
+            color: #8b5a2b;
+            /* wood brown */
+            min-width: 28px;
+            margin-top: 4px;
+        }
+
+        /* Headings inside cards */
+        .contact-card h4 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Text inside cards */
+        .contact-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Links inside contact (phone, email, whatsapp) */
+        .contact-card a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            color: #8b5a2b;
+            text-decoration: underline;
+        }
+
+        /* ================================
+   RESPONSIVE
+================================ */
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+
+            .contact-info {
+                padding: 24px;
+            }
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bed"></i> Vishwa Solutions
+            </a>
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html" class="active">Contact</a>
+                <a href="contact.html" class="btn btn-primary" style="color: white; padding: 8px 16px;">Enquiry</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="background-color: var(--secondary-color); padding: 60px 0;">
+        <div class="container text-center">
+            <h1 class="reveal">Contact Us</h1>
+            <p class="reveal" style="font-size: 1.1rem; color: var(--text-light);">Get a Free Quote or Consultation</p>
+        </div>
+    </section>
+
+    <!-- Contact Info & Form -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Info -->
+                <div class="contact-info reveal">
+                    <h2 style="margin-bottom: 24px;">Get In Touch</h2>
+                    <p style="margin-bottom: 32px; color: var(--text-light);">Call us or visit our workshop for expert
+                        advice on your furniture needs.</p>
+
+                    <div class="contact-card">
+                        <i class="fa-solid fa-user"></i>
+                        <div>
+                            <h4> Founder Name</h4>
+                            <p> Ram Lakhan Vishwakarma </p>
+                            <p> Vishwakarma</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 9819215853</p>
+                            <p>+91 7021542499</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+91 9819215853</p>
+                            <p>+91 7021542499</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>vishwasolutions199@gmail.com</p>
+
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Workshop Address</h4>
+                            <p> MIDC, Andheri(East), Mumbai,Maharashtra-400093</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form reveal">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <div class="carpenters-card">
+                                <label><b>Your Name</b></label>
+                                <input type="text" name="name" class="form-input" placeholder="Enter your full name"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Phone number </b></label>
+                            <input type="tel" name="phone" class="form-input" placeholder="Enter your phone number "
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Service Type</b></label>
+                            <select name="service" class="form-input">
+                                <option>Home Furniture</option>
+                                <option>Office Furniture</option>
+                                <option>Aluminium Work</option>
+                                <option>Renovation</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Message</b></label>
+
+                            <textarea name="message" class="form-input" placeholder="Tell us about your requirement..."
+                                rows="6"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Send Enquiry
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <!-- Success Modal -->
+        <div id="successModal" class="success-modal">
+            <div class="success-box">
+                <h2>Thank You!</h2>
+                <p>Your form has been submitted successfully.</p>
+                <p>We will reachout you within 24 hours!</p>
+            </div>
+        </div>
+
+    </section>
+    <!-- map- name - bar -->
+    <div class="map-name-bar">
+        <h3 align="center ">📍 Workshop Address-Mumbai</h3>
+    </div>
+    <!-- Map Section -->
+    <section class="section reveal" style="padding: 0;">
+
+        <iframe src="https://www.google.com/maps?q=19.119570127681598,72.86842454295243&z=16&output=embed" width="100%"
+            height="400" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy">
+        </iframe>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Vishwa Solutions</h4>
+                    <p style="color: #ccc; line-height: 1.6;">Your trusted partner for all carpentry and furniture
+                        needs. Bringing quality craftsmanship to your home and office.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html#home">Home Furniture</a></li>
+                        <li><a href="services.html#office">Office Interiors</a></li>
+                        <li><a href="services.html#aluminium">Aluminium Work</a></li>
+                        <li><a href="services.html#renovation">Renovation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> +91 9819215853
+                        </li>
+                        <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> +91 9819215853 </li>
+                        <li><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> ramlakhan1775@gmail.com</li>
+                        <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Andheri(E),Mumbai, India
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Vishwakarma Furniture Works. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
