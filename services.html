@@ -11,57 +11,15 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-        .service-detail-section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .service-detail-sontent {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .service-detail-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .service-detail-image {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .service-detail-image img {
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .service-list li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .service-list li i {
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -87,116 +45,149 @@
     </header>
 
     <!-- Page Header -->
-    <section class="section" style="background-color: var(--secondary-color); padding: 60px 0;">
+    <section class="page-header services-header reveal">
+        <div class="header-overlay"></div>
         <div class="container text-center">
-            <h1 class="reveal">Our Services</h1>
-            <p class="reveal" style="font-size: 1.1rem; color: var(--text-light);">Comprehensive Solutions for All Your
-                Furniture Needs
+            <span class="subheading" style="color: var(--accent);">WHAT WE DO</span>
+            <h1>Our Specialized <br>Services</h1>
+            <div class="hr-center"></div>
+            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;">
+                From conceptual design to master execution, we bring your vision to life with expert craftsmanship.
             </p>
         </div>
     </section>
 
     <!-- Home Furniture -->
-    <section id="home" class="service-detail-section">
+    <section id="home" class="service-detail-section reveal">
         <div class="container">
-            <div class="service-detail-sontent">
-                <div class="service-detail-image reveal">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9tZSUyMGZ1cm5pdHVyZXxlbnwwfHwwfHx8MA%3D%3D"
-                        alt="Home Furniture">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="image-parallax-wrap">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&auto=format&fit=crop&q=80"
+                            alt="Home Furniture">
+                        <div class="image-glass-info">
+                            <i class="fa-solid fa-couch"></i>
+                            <span>Residential</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-detail-text reveal">
-                    <h2>Home Furniture</h2>
-                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                <div class="service-detail-text">
+                    <span class="service-tag">CRAFTSMANSHIP</span>
+                    <h2>Premium Home Furniture</h2>
+                    <p>
                         Transform your house into a home with our custom-made wooden furniture. We design pieces that
-                        blend functionality with elegance, making perfect use of every inch of space.
+                        blend functionality with elegance, making perfect use of every inch of space. Our master
+                        carpenters use selected seasoned wood for durability.
                     </p>
                     <ul class="service-list">
-                        <li><i class="fa-solid fa-check"></i> Custom King & Queen Size Beds</li>
-                        <li><i class="fa-solid fa-check"></i> Floor-to-Ceiling Wardrobes & Lofts</li>
-                        <li><i class="fa-solid fa-check"></i> Modular Kitchen Cabinets</li>
-                        <li><i class="fa-solid fa-check"></i> TV Units & Wall Paneling</li>
-                        <li><i class="fa-solid fa-check"></i> Wooden Doors & Frames</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Custom King & Queen Size Beds</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Floor-to-Ceiling Wardrobes & Lofts</li>
+                        <li><i class="fa-solid fa-circle-check"></i> High-Gloss Modular Kitchens</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Aesthetic TV Units & Wall Paneling</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Designer Wooden Doors & Frames</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                    <a href="contact.html" class="btn btn-primary">Get Consultation</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Office Furniture -->
-    <section id="office" class="service-detail-section" style="background-color: var(--background-light);">
+    <section id="office" class="service-detail-section alt-section reveal">
         <div class="container">
-            <div class="service-detail-sontent" style="flex-direction: row-reverse;">
-                <div class="service-detail-image reveal">
-                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=800&auto=format&fit=crop&q=60"
-                        alt="Office Furniture">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="image-parallax-wrap">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&auto=format&fit=crop&q=80"
+                            alt="Office Furniture">
+                        <div class="image-glass-info">
+                            <i class="fa-solid fa-building"></i>
+                            <span>Corporate</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-detail-text reveal">
-                    <h2>Office Furniture</h2>
-                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                <div class="service-detail-text">
+                    <span class="service-tag">PRODUCTIVITY</span>
+                    <h2>Modern Office Interiors</h2>
+                    <p>
                         Create a professional and productive environment with our office interior solutions. We provide
-                        sturdy, long-lasting, and ergonomic furniture for modern workspaces.
+                        sturdy, long-lasting, and ergonomic furniture for modern workspaces that reflect your brand
+                        identity.
                     </p>
                     <ul class="service-list">
-                        <li><i class="fa-solid fa-check"></i> Modular Workstations & Desks</li>
-                        <li><i class="fa-solid fa-check"></i> Executive Cabin Furniture</li>
-                        <li><i class="fa-solid fa-check"></i> Conference Tables</li>
-                        <li><i class="fa-solid fa-check"></i> File Stroage & Cabinets</li>
-                        <li><i class="fa-solid fa-check"></i> Reception Areas</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Scalable Workstations & Desks</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Premium Executive Cabin Furniture</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Large Conference & Meeting Tables</li>
+                        <li><i class="fa-solid fa-circle-check"></i> High-Density Storage Solutions</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Custom Reception & Welcome Areas</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                    <a href="contact.html" class="btn btn-primary">Start Office Project</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Aluminium Work -->
-    <section id="aluminium" class="service-detail-section">
+    <section id="aluminium" class="service-detail-section reveal">
         <div class="container">
-            <div class="service-detail-sontent">
-                <div class="service-detail-image reveal">
-                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&auto=format&fit=crop&q=60"
-                        alt="Aluminium Windows">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="image-parallax-wrap">
+                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&auto=format&fit=crop&q=80"
+                            alt="Aluminium Windows">
+                        <div class="image-glass-info">
+                            <i class="fa-solid fa-window-restore"></i>
+                            <span>Fabrication</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-detail-text reveal">
-                    <h2>Aluminium Work</h2>
-                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                <div class="service-detail-text">
+                    <span class="service-tag">STRUCTURAL</span>
+                    <h2>Aluminium Fabrication</h2>
+                    <p>
                         We specialize in high-quality aluminium fabrication for homes and offices. Our aluminium
-                        solutions are durable, rust-free, and sleek.
+                        solutions are durable, rust-free, and sleek, perfect for modern architectural needs.
                     </p>
                     <ul class="service-list">
-                        <li><i class="fa-solid fa-check"></i> Aluminium Sliding Windows</li>
-                        <li><i class="fa-solid fa-check"></i> Office Glass Partitions with Aluminium Frames</li>
-                        <li><i class="fa-solid fa-check"></i> Bathroom Doors & Vents</li>
-                        <li><i class="fa-solid fa-check"></i> Shop Fronts & Showroom Glazing</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Soundproof Sliding Windows</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Clear Glass Office Partitions</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Waterproof Bathroom Doors</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Premium Shop Fronts & Glazing</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                    <a href="contact.html" class="btn btn-primary">Get Fabrication Quote</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Renovation -->
-    <section id="renovation" class="service-detail-section" style="background-color: var(--background-light);">
+    <section id="renovation" class="service-detail-section alt-section reveal">
         <div class="container">
-            <div class="service-detail-sontent" style="flex-direction: row-reverse;">
-                <div class="service-detail-image reveal">
-                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800&auto=format&fit=crop&q=60"
-                        alt="Renovation Work">
+            <div class="service-detail-grid">
+                <div class="service-detail-image">
+                    <div class="image-parallax-wrap">
+                        <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800&auto=format&fit=crop&q=80"
+                            alt="Renovation Work">
+                        <div class="image-glass-info">
+                            <i class="fa-solid fa-hammer"></i>
+                            <span>Renovation</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-detail-text reveal">
-                    <h2>Renovation & Custom Work</h2>
-                    <p style="color: var(--text-light); margin-bottom: 16px;">
+                <div class="service-detail-text">
+                    <span class="service-tag">REVIVAL</span>
+                    <h2>Furniture Renovation</h2>
+                    <p>
                         Don't throw away good wood! We help you renovate and repurpose your old furniture. We also
-                        undertake complete property renovation projects.
+                        undertake complete property restoration projects with a modern touch.
                     </p>
                     <ul class="service-list">
-                        <li><i class="fa-solid fa-check"></i> Old Furniture Repair & Polish</li>
-                        <li><i class="fa-solid fa-check"></i> Sofa Repair & Reupholstery</li>
-                        <li><i class="fa-solid fa-check"></i> Complete Room Redesign</li>
-                        <li><i class="fa-solid fa-check"></i> Structural Carpentry Repairs</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Master Polish & Re-finishing</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Sofa Repair & Reupholstery</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Complete Room Modernization</li>
+                        <li><i class="fa-solid fa-circle-check"></i> Hardware Upgrade & Smooth Operation</li>
                     </ul>
-                    <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                    <a href="contact.html" class="btn btn-primary">Start Renovation</a>
                 </div>
             </div>
         </div>

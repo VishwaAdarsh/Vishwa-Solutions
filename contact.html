@@ -11,170 +11,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
-    <style>
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
 
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background: var(--primary-color);
-            color: white;
-            padding: 40px;
-            border-radius: 8px;
-        }
-
-        .contact-form {
-            flex: 2;
-            min-width: 300px;
-            padding: 40px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-        }
-
-        .info-item {
-            margin-bottom: 30px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            margin-top: 5px;
-            color: var(--secondary-color);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-    </style>
-
-    <style>
-        /* ================================
-   CONTACT SECTION STYLES
-================================ */
-
-        /* Wrapper layout */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            background: #f7f5dc;
-            /* light cream background */
-            padding: 40px;
-            border-radius: 18px;
-        }
-
-        /* Left info panel */
-        .contact-info {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Individual contact cards */
-        .contact-card {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            background: #fafafa;
-            padding: 16px 18px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            border: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-
-        /* Hover effect */
-        .contact-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        /* Icons */
-        .contact-card i {
-            font-size: 20px;
-            color: #8b5a2b;
-            /* wood brown */
-            min-width: 28px;
-            margin-top: 4px;
-        }
-
-        /* Headings inside cards */
-        .contact-card h4 {
-            margin: 0 0 6px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        /* Text inside cards */
-        .contact-card p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Links inside contact (phone, email, whatsapp) */
-        .contact-card a {
-            color: #555;
-            text-decoration: none;
-        }
-
-        .contact-card a:hover {
-            color: #8b5a2b;
-            text-decoration: underline;
-        }
-
-        /* ================================
-   RESPONSIVE
-================================ */
-        @media (max-width: 768px) {
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                padding: 24px;
-            }
-
-            .contact-info {
-                padding: 24px;
-            }
-        }
-    </style>
 
 
 </head>
@@ -202,128 +48,153 @@
     </header>
 
     <!-- Page Header -->
-    <section class="section" style="background-color: var(--secondary-color); padding: 60px 0;">
+    <section class="page-header contact-header reveal">
+        <div class="header-overlay"></div>
         <div class="container text-center">
-            <h1 class="reveal">Contact Us</h1>
-            <p class="reveal" style="font-size: 1.1rem; color: var(--text-light);">Get a Free Quote or Consultation</p>
+            <span class="subheading" style="color: var(--accent);">CONNECT</span>
+            <h1>Let's Start Your <br>Dream Project</h1>
+            <div class="hr-center"></div>
+            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;">
+                Have a vision? We have the expertise. Reach out for a free site visit and consultation.
+            </p>
         </div>
     </section>
 
     <!-- Contact Info & Form -->
-    <section class="section">
+    <section class="section contact-section">
         <div class="container">
-            <div class="contact-wrapper">
-                <!-- Contact Info -->
-                <div class="contact-info reveal">
-                    <h2 style="margin-bottom: 24px;">Get In Touch</h2>
-                    <p style="margin-bottom: 32px; color: var(--text-light);">Call us or visit our workshop for expert
-                        advice on your furniture needs.</p>
-
-                    <div class="contact-card">
-                        <i class="fa-solid fa-user"></i>
-                        <div>
-                            <h4> Founder Name</h4>
-                            <p> Ram Lakhan Vishwakarma </p>
-                            <p> Vishwakarma</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fa-solid fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91 9819215853</p>
-                            <p>+91 7021542499</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p>+91 9819215853</p>
-                            <p>+91 7021542499</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>vishwasolutions199@gmail.com</p>
-
-                        </div>
-                    </div>
-
-                    <div class="contact-card">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <h4>Workshop Address</h4>
-                            <p> MIDC, Andheri(East), Mumbai,Maharashtra-400093</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form reveal">
-                    <h2>Send Us a Message</h2>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <div class="carpenters-card">
-                                <label><b>Your Name</b></label>
-                                <input type="text" name="name" class="form-input" placeholder="Enter your full name"
-                                    required>
+            <div class="contact-grid">
+                <!-- Contact Info Panel -->
+                <div class="contact-sidebar reveal">
+                    <div class="glass-card contact-panel">
+                        <h2>Quick Contact</h2>
+                        <p>Prefer direct communication? Reach us through any of these channels.</p>
+                        <div class="contact-method">
+                            <div class="method-icon"><i class="fa-solid fa-user"></i></div>
+                            <div class="method-info">
+                                <span>Founder</span>
+                                <strong>Ram lakhan Vishwakarma</strong>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label><b>Phone number </b></label>
-                            <input type="tel" name="phone" class="form-input" placeholder="Enter your phone number "
-                                required>
+                        <div class="contact-method-list">
+                            <a href="tel:+919819215853" class="contact-method">
+                                <div class="method-icon"><i class="fa-solid fa-phone"></i></div>
+                                <div class="method-info">
+                                    <span>Call Us</span>
+                                    <strong>+91 9819215853</strong>
+                                </div>
+                            </a>
+                            <a href="https://wa.me/9819215853" class="contact-method">
+                                <div class="method-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                <div class="method-info">
+                                    <span>WhatsApp</span>
+                                    <strong>+91 9819215853</strong>
+                                </div>
+                            </a>
+                            <div class="contact-method">
+                                <div class="method-icon"><i class="fa-solid fa-envelope"></i></div>
+                                <div class="method-info">
+                                    <span>Email Support</span>
+                                    <strong>ramlakhan1775@gmail.com</strong>
+                                </div>
+                            </div>
+                            <div class="contact-method">
+                                <div class="method-icon"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="method-info">
+                                    <span>Our Workshop</span>
+                                    <strong>MIDC, Andheri(E), Mumbai 400093</strong>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label><b>Service Type</b></label>
-                            <select name="service" class="form-input">
-                                <option>Home Furniture</option>
-                                <option>Office Furniture</option>
-                                <option>Aluminium Work</option>
-                                <option>Renovation</option>
-                                <option>Others</option>
-                            </select>
+
+                        <div class="consultation-badge">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <div>
+                                <strong>Free Site Visit</strong>
+                                <p>Available across Mumbai & Suburbs</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label><b>Message</b></label>
+                    </div>
+                </div>
 
-                            <textarea name="message" class="form-input" placeholder="Tell us about your requirement..."
-                                rows="6"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Send Enquiry
-                        </button>
-
-                    </form>
-
+                <!-- Contact Form Panel -->
+                <div class="contact-main reveal">
+                    <div class="glass-card form-container">
+                        <h2>Send a Message</h2>
+                        <form id="contactForm" class="premium-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <div class="input-wrap">
+                                        <i class="fa-solid fa-user"></i>
+                                        <input type="text" name="name" placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <div class="input-wrap">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <input type="tel" name="phone" placeholder="+91 00000 00000" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Service Interested In</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                    <select name="service">
+                                        <option value="Home Furniture">Home Furniture</option>
+                                        <option value="Office Interiors">Office Interiors</option>
+                                        <option value="Aluminium Work">Aluminium Fabrication</option>
+                                        <option value="Renovation">Complete Renovation</option>
+                                        <option value="Other">Other Requirements</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Message</label>
+                                <div class="input-wrap">
+                                    <i class="fa-solid fa-comment-dots"></i>
+                                    <textarea name="message" rows="5"
+                                        placeholder="Tell us about your space and preferences..."></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <span>Send Enquiry</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Success Modal -->
-        <div id="successModal" class="success-modal">
-            <div class="success-box">
-                <h2>Thank You!</h2>
-                <p>Your form has been submitted successfully.</p>
-                <p>We will reachout you within 24 hours!</p>
-            </div>
+    </section>
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-box">
+            <h2>Thank You!</h2>
+            <p>Your form has been submitted successfully.</p>
+            <p>We will reachout you within 24 hours!</p>
         </div>
+    </div>
 
     </section>
-    <!-- map- name - bar -->
-    <div class="map-name-bar">
-        <h3 align="center ">📍 Workshop Address-Mumbai</h3>
-    </div>
     <!-- Map Section -->
-    <section class="section reveal" style="padding: 0;">
-
-        <iframe src="https://www.google.com/maps?q=19.119570127681598,72.86842454295243&z=16&output=embed" width="100%"
-            height="400" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy">
-        </iframe>
+    <section class="section map-section reveal">
+        <div class="container">
+            <div class="map-card-wrap">
+                <div class="map-info-bar">
+                    <h3><i class="fa-solid fa-map-location-dot"></i> Visit Our Workshop</h3>
+                    <p>Experience our craftsmanship firsthand. We are located in the heart of Mumbai's industrial
+                        center.</p>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps?q=19.119570127681598,72.86842454295243&z=16&output=embed"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->

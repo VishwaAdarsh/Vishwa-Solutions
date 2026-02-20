@@ -11,7 +11,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,70 +46,92 @@
     </header>
 
     <!-- Page Header -->
-    <section class="section" style="background-color: var(--secondary-color); padding: 60px 0;">
+    <section class="page-header about-header reveal">
+        <div class="header-overlay"></div>
         <div class="container text-center">
-            <h1 class="reveal">About Us</h1>
-            <p class="reveal" style="font-size: 1.1rem; color: var(--text-light);">Building Trust with Quality
-                Craftsmanship</p>
+            <span class="subheading" style="color: var(--accent);">OUR STORY</span>
+            <h1>Crafting Excellence <br>Since 2010</h1>
+            <div class="hr-center"></div>
+            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 700px; margin: 0 auto;">
+                Building trust through precision, quality materials, and traditional craftsmanship.
+            </p>
         </div>
     </section>
 
     <!-- About Story -->
-    <section class="section">
+    <section class="section about-story-section">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
-                <div class="reveal" style="flex: 1; min-width: 300px;">
-                    <img src="https://media.istockphoto.com/id/1061173208/photo/young-carpenter-using-sander-while-working-on-a-piece-of-wood.webp?a=1&b=1&s=612x612&w=0&k=20&c=1RsjX0YSceJPpaPg1PPhOQk-3s8_ITgniz7YTqYC3Qo="
-                        alt="Carpenter at work" style="border-radius: 8px; width: 100%;">
+            <div class="story-grid">
+                <div class="story-image reveal">
+                    <div class="image-stack">
+                        <img src="https://media.istockphoto.com/id/1061173208/photo/young-carpenter-using-sander-while-working-on-a-piece-of-wood.webp?a=1&b=1&s=612x612&w=0&k=20&c=1RsjX0YSceJPpaPg1PPhOQk-3s8_ITgniz7YTqYC3Qo="
+                            alt="Carpenter at work">
+                        <div class="accent-frame"></div>
+                    </div>
                 </div>
-                <div class="reveal" style="flex: 1; min-width: 300px;">
-                    <h2>Our Story</h2>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">
+                <div class="story-content reveal">
+                    <div class="vertical-accent"></div>
+                    <h2>Our Journey of <span>Craftsmanship</span></h2>
+                    <p>
                         Welcome to Vishwakarma Furniture, where traditional craftsmanship meets modern design. With over
                         15 years of experience in the carpentry and furniture industry, we have established ourselves as
                         a reliable name for quality home and office solutions.
                     </p>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">
+                    <p>
                         We started as a small team of skilled carpenters and have grown into a full-service furniture
                         contractor. We specialize in transforming spaces—whether it's a cozy bedroom, a functional
                         modular kitchen, or a professional office setup.
                     </p>
-                    <p style="margin-bottom: 20px; color: var(--text-light);">
-                        Our commitment is simple: <strong>Quality materials, precise finishing, and timely
-                            delivery.</strong> We believe that furniture is not just about wood; it's about comfort,
-                        aesthetics, and durability.
+                    <p class="premium-quote">
+                        "Our commitment is simple: Quality materials, precise finishing, and timely
+                        delivery. We believe that furniture is not just about wood; it's about comfort,
+                        aesthetics, and durability."
                     </p>
-                    <a href="contact.html" class="btn btn-primary">Work With Us</a>
+                    <div class="story-cta">
+                        <a href="contact.html" class="btn btn-primary">Work With Us</a>
+                        <div class="founder-sig">
+                            <span class="sig-name">Ram Lakhan</span>
+                            <span class="sig-role">Founder & Master Craftsman</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Expertise Section -->
-    <section class="section" style="background-color: var(--background-light);">
+    <section class="section expertise-section">
         <div class="container">
-            <h2 class="text-center reveal" style="margin-bottom: 40px;">Our Expertise</h2>
-            <div class="services-grid">
-                <div class="service-card reveal" style="text-align: left;">
-                    <h3>Residential Projects</h3>
+            <div class="section-header text-center reveal">
+                <span class="subheading">AREA OF FOCUS</span>
+                <h2>Our Mastery</h2>
+                <div class="hr-center"></div>
+            </div>
+
+            <div class="expertise-grid">
+                <div class="expertise-card glass-card reveal">
+                    <div class="expertise-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h3>Residential Mastery</h3>
                     <p>We have successfully completed over 500+ home projects, delivering custom wardrobes, beds, and
                         kitchen units that perfectly fit the available space.</p>
                 </div>
-                <div class="service-card reveal" style="text-align: left;">
+                <div class="expertise-card glass-card reveal">
+                    <div class="expertise-icon"><i class="fa-solid fa-building-user"></i></div>
                     <h3>Commercial Fit-outs</h3>
                     <p>From startups to established corporate offices, we provide ergonomic workstations, cabins, and
                         storage solutions that enhance productivity.</p>
                 </div>
-                <div class="service-card reveal" style="text-align: left;">
+                <div class="expertise-card glass-card reveal">
+                    <div class="expertise-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                     <h3>Renovation Specialists</h3>
                     <p>We give a new life to your old furniture and spaces. Our renovation services are cost-effective
                         and designed to modernize your existing setup.</p>
                 </div>
-                <div class="service-card reveal" style="text-align: left;">
-                    <h3>Aluminium Work Specialists</h3>
-                    <p>We provide premium aluminium windows, doors, partitions, and sliding systems with strong build
-                        quality and clean finishing for homes and offices.
-                    </p>
+                <div class="expertise-card glass-card reveal">
+                    <div class="expertise-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Aluminium Specialists</h3>
+                    <p>Premium aluminium windows, doors, office partitions, and sliding systems with strong build
+                        quality and clean finishing.</p>
                 </div>
             </div>
         </div>
