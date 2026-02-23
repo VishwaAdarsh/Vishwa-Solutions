@@ -417,7 +417,7 @@ header.scrolled .navbar {
    ========================================================================== */
 .hero {
     position: relative;
-    background-color: #1a1410;
+    background-color: #55524f;
     background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&auto=format&fit=crop&q=80');
     background-size: cover;
     background-position: center;
@@ -524,13 +524,13 @@ header.scrolled .navbar {
 
 /* Line 1: "Complete" — light weight, subtle spacing */
 .headline-line--light {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 800;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.45);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
     letter-spacing: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
 }
 
@@ -550,11 +550,11 @@ header.scrolled .navbar {
 
 /* Line 3: "& Interior Solutions" — medium weight */
 .headline-line--medium {
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 500;
+    font-size: clamp(2.3rem, 4vw, 3rem);
+    font-weight: 600px;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.842);
     letter-spacing: 2px;
     margin-top: 8px;
 }
@@ -635,13 +635,13 @@ header.scrolled .navbar {
 .hero-image::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 60%;
+    left: 60%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
     background: radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, transparent 70%);
-    border-radius: 50%;
+    border-radius: 40%;
     z-index: 0;
     filter: blur(30px);
 }
