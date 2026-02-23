@@ -513,7 +513,7 @@ header.scrolled .navbar {
 /* ── HERO HEADLINE — Refined Stroke Typography ── */
 .hero-headline {
     margin-bottom: 32px;
-    line-height: 1.2;
+    line-height: 1.1;
     cursor: default;
 }
 
@@ -524,39 +524,40 @@ header.scrolled .navbar {
 
 /* Line 1: "Complete" — light weight, subtle spacing */
 .headline-line--light {
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(3rem, 7.5vw, 5.2rem);
     font-weight: 800;
     color: transparent;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px rgb(255, 255, 255);
-    letter-spacing: 2px;
-    margin-bottom: 6px;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
     text-transform: uppercase;
 }
 
+
 /* Line 2: "FURNITURE" — airy spacing, bold, primary accent */
 .headline-line--accent {
-    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-size: clamp(3.5rem, 9vw, 6.2rem);
     font-weight: 800;
     color: transparent;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 1px var(--color-accent);
-    letter-spacing: 8px;
+    letter-spacing: 4px;
     text-transform: uppercase;
     position: relative;
-    padding-bottom: 16px;
-    margin-bottom: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 /* Line 3: "& Interior Solutions" — medium weight */
 .headline-line--medium {
-    font-size: clamp(2.3rem, 4vw, 3rem);
-    font-weight: 600px;
+    font-size: clamp(2.6rem, 6.5vw, 4.5rem);
+    font-weight: 600;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.842);
-    letter-spacing: 2px;
-    margin-top: 8px;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
+    letter-spacing: 1px;
+    margin-top: 4px;
 }
 
 /* ── HOVER FILL EFFECT ── */
@@ -2346,7 +2347,7 @@ footer {
     }
 
     h1 {
-        font-size: 2.2rem;
+        font-size: 3rem;
     }
 
     h2 {
@@ -2357,20 +2358,6 @@ footer {
         text-align: center;
     }
 
-    .headline-line--light {
-        font-size: 1.25rem;
-        letter-spacing: 1px;
-    }
-
-    .headline-line--accent {
-        font-size: clamp(2rem, 10vw, 3rem);
-        letter-spacing: 4px;
-    }
-
-    .headline-line--medium {
-        font-size: 1.15rem;
-        letter-spacing: 1px;
-    }
 
     /* Ensure text is always filled even on hover/touch at this size */
     .hero-headline .headline-line {
