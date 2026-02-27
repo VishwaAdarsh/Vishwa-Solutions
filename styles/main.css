@@ -5,15 +5,11 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
-    /* Core Colors — Modern Wood & Architectural Luxury */
+    /* Core Colors — Simplified Palette */
     --color-primary: #3d2b1f;
-    --color-primary-light: #5d4637;
-    --color-primary-dark: #2a1d15;
     --color-accent: #c5a059;
-    --color-accent-light: #d4b47a;
-    --color-accent-glow: rgba(197, 160, 89, 0.3);
 
-    /* Backgrounds */
+    /* Backgrounds & Neutrals */
     --color-bg-main: #fcfaf7;
     --color-bg-section: #f7f2ea;
     --color-bg-card: #ffffff;
@@ -22,12 +18,10 @@
     /* Typography Colors */
     --color-text-primary: #1a1a1a;
     --color-text-muted: #5d5d5d;
-    --color-text-light: #8a8a8a;
     --color-text-on-dark: #ffffff;
 
     /* Borders & Dividers */
     --border-color: rgba(61, 43, 31, 0.1);
-    --border-light: rgba(61, 43, 31, 0.05);
 
     /* Spacing Scale */
     --space-xs: 4px;
@@ -38,25 +32,24 @@
     --space-xxl: 80px;
 
     /* Border Radius */
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 20px;
-    --radius-xl: 24px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
 
     /* Shadows — Elevation Scale */
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 10px 30px rgba(61, 43, 31, 0.08);
-    --shadow-lg: 0 20px 50px rgba(61, 43, 31, 0.12);
-    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --shadow-sm: 0 4px 12px rgba(61, 43, 31, 0.04);
+    --shadow-md: 0 8px 24px rgba(61, 43, 31, 0.08);
+    --shadow-lg: 0 16px 40px rgba(61, 43, 31, 0.12);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
 
     /* Fonts */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
     /* Transitions */
-    --transition-fast: all 0.2s ease;
-    --transition-normal: all 0.3s ease;
-    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.3s ease;
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ── DARK MODE ── */
@@ -67,11 +60,9 @@ body.dark {
     --color-bg-glass: rgba(36, 36, 36, 0.7);
 
     --color-text-primary: #f5f5f5;
-    --color-text-muted: #bbbbbb;
-    --color-text-light: #888888;
+    --color-text-muted: #a0a0a0;
 
     --border-color: rgba(255, 255, 255, 0.1);
-    --border-light: rgba(255, 255, 255, 0.05);
 
     --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.4);
@@ -152,48 +143,45 @@ h6 {
     color: var(--color-text-primary);
     font-weight: 700;
     line-height: 1.2;
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin: 0 0 1.2rem;
 }
 
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.5px;
 }
 
 h2 {
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 h3 {
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
 }
 
 h4 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 p {
     color: var(--color-text-muted);
-    line-height: 1.8;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    line-height: 1.6;
+    margin: 0 0 1rem;
+    font-size: 1rem;
 }
 
 /* ==========================================================================
    LAYOUT UTILITIES
    ========================================================================== */
 .container {
-    width: 92%;
-    max-width: 1400px;
+    width: 90%;
     margin: 0 auto;
-    padding: 0 20px;
 }
 
 .section {
-    padding: 100px 0;
+    padding: var(--space-xxl) 0;
 }
 
 .text-center {
@@ -207,17 +195,17 @@ p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 14px 32px;
+    padding: 14px 28px;
     border-radius: var(--radius-sm);
     font-weight: 600;
     font-size: 16px;
     font-family: inherit;
-    letter-spacing: 0.3px;
-    transition: var(--transition-smooth);
+    letter-spacing: 0.5px;
+    transition: var(--transition-fast);
     cursor: pointer;
     border: none;
     outline: none;
-    gap: 10px;
+    gap: 8px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -227,26 +215,28 @@ p {
 .btn-primary {
     background: var(--color-primary);
     color: white;
-    box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn--primary:hover,
 .btn-primary:hover {
-    background: var(--color-primary-light);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(139, 90, 43, 0.4);
+    background: #4a3628;
+    /* slightly lighter brown */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .btn--primary:active,
 .btn-primary:active {
-    transform: translateY(-1px);
+    transform: translateY(0);
 }
 
 .btn--primary:disabled,
 .btn-primary:disabled {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: not-allowed;
     box-shadow: none;
+    transform: none;
 }
 
 .btn--secondary,
@@ -260,8 +250,8 @@ p {
 .btn-secondary:hover {
     background: var(--color-primary);
     color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(139, 90, 43, 0.2);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-lg {
@@ -417,15 +407,75 @@ header.scrolled .navbar {
    ========================================================================== */
 .hero {
     position: relative;
-    background-color: #55524f;
-    background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&auto=format&fit=crop&q=80');
-    background-size: cover;
-    background-position: center;
+    background-color: #1a1a1a;
     display: flex;
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
     padding: 0;
+    min-height: 100vh;
+}
+
+.hero-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--color-accent);
+    z-index: 10;
+    transition: width 0.1s linear;
+}
+
+.hero-slider-track {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-slide.active {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 3;
+}
+
+.hero-slide.fade-out {
+    transform: translateX(-20%);
+    opacity: 0;
+    z-index: 2;
+}
+
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    transform: scale(1.05);
+    transition: transform 6s linear;
+}
+
+.hero-slide.active .hero-bg-image {
+    transform: scale(1.1);
 }
 
 /* Dark gradient overlay — left-heavy for text readability */
@@ -433,10 +483,10 @@ header.scrolled .navbar {
     position: absolute;
     inset: 0;
     background: linear-gradient(105deg,
-            rgba(20, 14, 8, 0.92) 0%,
-            rgba(20, 14, 8, 0.80) 40%,
-            rgba(20, 14, 8, 0.45) 70%,
-            rgba(20, 14, 8, 0.25) 100%);
+            var(--overlay-left, rgba(20, 14, 8, 0.92)) 0%,
+            var(--overlay-left, rgba(20, 14, 8, 0.80)) 40%,
+            rgba(0, 0, 0, 0.5) 70%,
+            var(--overlay-right, rgba(20, 14, 8, 0.25)) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -445,24 +495,25 @@ header.scrolled .navbar {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 30% 40%, rgba(197, 160, 89, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 30% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
 }
 
-/* Radial gold glow behind headline area */
+/* Radial glow behind headline area */
 .hero-glow {
     position: absolute;
     top: 15%;
     left: 8%;
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(197, 160, 89, 0.10) 0%, transparent 60%);
+    background: radial-gradient(circle, var(--accent, var(--color-accent)) 0%, transparent 60%);
+    opacity: 0.15;
     border-radius: 50%;
     pointer-events: none;
     z-index: 1;
     filter: blur(60px);
 }
 
-/* Large faded watermark text — "CRAFT" */
+/* Large faded watermark text */
 .hero-watermark {
     position: absolute;
     top: 50%;
@@ -487,18 +538,54 @@ header.scrolled .navbar {
     padding: 100px 0 80px;
     z-index: 2;
     position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .hero-content {
     flex: 1.2;
 }
 
+/* Slider controls */
+.hero-slider-controls {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.hero-slider-dots {
+    display: flex;
+    gap: 12px;
+}
+
+.hero-dot {
+    width: 32px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.hero-dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-dot.active {
+    background: var(--accent, var(--color-accent));
+    width: 48px;
+}
+
 .badge {
     display: inline-block;
     padding: 8px 18px;
-    background: rgba(197, 160, 89, 0.15);
-    border: 1px solid rgba(197, 160, 89, 0.3);
-    color: var(--color-accent-light);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--accent, rgba(197, 160, 89, 0.3));
+    color: var(--accent, var(--color-accent-light));
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 13px;
@@ -510,85 +597,116 @@ header.scrolled .navbar {
     -webkit-backdrop-filter: blur(4px);
 }
 
-/* ── HERO HEADLINE — Refined Stroke Typography ── */
+/* ── HERO HEADLINE — Solid Gradient Typography ── */
 .hero-headline {
     margin-bottom: 32px;
     line-height: 1.1;
     cursor: default;
+    display: flex;
+    flex-direction: column;
 }
 
-.headline-line {
+.hero-title-text {
     display: block;
-    transition: all 0.35s ease-in-out;
-}
-
-/* Line 1: "Complete" — light weight, subtle spacing */
-.headline-line--light {
-    font-size: clamp(3rem, 7.5vw, 5.2rem);
     font-weight: 800;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgb(255, 255, 255);
-    letter-spacing: 1.5px;
+    letter-spacing: 0px;
     margin-bottom: 4px;
     text-transform: uppercase;
+    transition: all 0.3s ease;
+    line-height: 1.15;
 }
 
+/* ── Typography Size Hierarchy ── */
+.title-primary {
+    font-size: clamp(3rem, 7vw, 6rem);
+}
 
-/* Line 2: "FURNITURE" — airy spacing, bold, primary accent */
-.headline-line--accent {
-    font-size: clamp(3.5rem, 9vw, 6.2rem);
-    font-weight: 800;
-    color: transparent;
+.title-secondary {
+    font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+}
+
+.title-tertiary {
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* ── Layout & Alignment ── */
+.hero-content.slide-align-center {
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+/* ── Color Utility Classes ── */
+.color-soft-white {
+    color: #faf8f5;
+}
+
+.color-warm-beige {
+    color: #e8dcc4;
+}
+
+.color-soft-gold {
+    color: #d4af37;
+}
+
+.color-deep-brown {
+    color: #8b5a2b;
+}
+
+.color-cream {
+    color: #fffdd0;
+}
+
+.color-matte-gold {
+    color: #b89947;
+}
+
+.color-clean-white {
+    color: #ffffff;
+}
+
+.color-neutral-grey {
+    color: #cccccc;
+}
+
+.color-gold-accent {
+    color: #c5a059;
+}
+
+.color-burnt-gold {
+    color: #b5651d;
+}
+
+.color-beige {
+    color: #f5f5dc;
+}
+
+.color-gold-grad {
+    background: linear-gradient(90deg, #c5a059 0%, #e6c88a 100%);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px var(--color-accent);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    position: relative;
-    padding-bottom: 12px;
-    margin-bottom: 8px;
+    background-clip: text;
 }
 
-/* Line 3: "& Interior Solutions" — medium weight */
-.headline-line--medium {
-    font-size: clamp(2.6rem, 6.5vw, 4.5rem);
-    font-weight: 600;
-    color: transparent;
+.color-silver-grad {
+    background: linear-gradient(90deg, #e0e0e0 0%, #ffffff 50%, #b0b5b9 100%);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
-    letter-spacing: 1px;
-    margin-top: 4px;
-}
-
-/* ── HOVER FILL EFFECT ── */
-.hero-headline:hover .headline-line--light {
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
-    -webkit-text-stroke: 0px transparent;
-}
-
-.hero-headline:hover .headline-line--accent {
-    -webkit-text-fill-color: var(--color-accent);
-    -webkit-text-stroke: 0px transparent;
-    text-shadow: 0 0 35px var(--color-accent-glow);
-}
-
-.hero-headline:hover .headline-line--medium {
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.8);
-    -webkit-text-stroke: 0px transparent;
-}
-
-.hero-headline:hover .headline-line--accent::after {
-    opacity: 1;
-    height: 3px;
+    background-clip: text;
 }
 
 .hero p {
     font-size: 1.15rem;
     margin-bottom: 40px;
     max-width: 580px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.7;
-    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
 }
 
 .hero-buttons {
@@ -599,17 +717,17 @@ header.scrolled .navbar {
 
 /* ── CTA Buttons — Refined for dark hero ── */
 .hero-cta-primary {
-    background: var(--color-accent) !important;
-    color: var(--color-primary-dark) !important;
-    box-shadow: 0 8px 30px rgba(197, 160, 89, 0.3);
+    background: var(--accent, var(--color-accent)) !important;
+    color: #1a1a1a !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     font-weight: 700;
     border: none;
 }
 
 .hero-cta-primary:hover {
     background: white !important;
-    color: var(--color-primary-dark) !important;
-    box-shadow: 0 12px 40px rgba(197, 160, 89, 0.45);
+    color: #1a1a1a !important;
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
 }
 
@@ -772,29 +890,39 @@ header.scrolled .navbar {
 /* ── Staggered Entrance Animations ── */
 .hero-anim {
     opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
+    transform: translateX(-20px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-anim.active {
+.hero-slide.active .hero-anim {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
-.hero-anim--1 {
-    transition-delay: 0.1s;
+.hero-slide.fade-out .hero-anim {
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.4s ease;
 }
 
-.hero-anim--2 {
-    transition-delay: 0.25s;
+.hero-slide.active .hero-anim--1 {
+    transition-delay: 0.12s;
 }
 
-.hero-anim--3 {
-    transition-delay: 0.4s;
+.hero-slide.active .hero-anim--2 {
+    transition-delay: 0.24s;
 }
 
-.hero-anim--4 {
-    transition-delay: 0.55s;
+.hero-slide.active .hero-anim--3 {
+    transition-delay: 0.36s;
+}
+
+.hero-slide.active .hero-anim--4 {
+    transition-delay: 0.48s;
+}
+
+.hero-slide.active .hero-anim--5 {
+    transition-delay: 0.60s;
 }
 
 /* ── Trust Mini Bar ── */
@@ -2096,8 +2224,8 @@ header.scrolled .navbar {
    ========================================================================== */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease;
+    transform: translateY(20px);
+    transition: var(--transition-slow);
 }
 
 .reveal.active {
@@ -2317,25 +2445,6 @@ footer {
     .scroll-indicator {
         bottom: 100px;
     }
-
-    /* Mobile Fallback: Filled text for readability */
-    .headline-line--light {
-        color: rgba(255, 255, 255, 0.95);
-        -webkit-text-fill-color: rgba(255, 255, 255, 0.95);
-        -webkit-text-stroke: 0 transparent;
-    }
-
-    .headline-line--accent {
-        color: var(--color-accent);
-        -webkit-text-fill-color: var(--color-accent);
-        -webkit-text-stroke: 0 transparent;
-    }
-
-    .headline-line--medium {
-        color: rgba(255, 255, 255, 0.85);
-        -webkit-text-fill-color: rgba(255, 255, 255, 0.85);
-        -webkit-text-stroke: 0 transparent;
-    }
 }
 
 /* ==========================================================================
@@ -2347,23 +2456,16 @@ footer {
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: clamp(2.2rem, 8vw, 3rem);
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: clamp(1.6rem, 6vw, 2rem);
     }
 
     .hero {
         text-align: center;
-    }
-
-
-    /* Ensure text is always filled even on hover/touch at this size */
-    .hero-headline .headline-line {
-        color: inherit;
-        -webkit-text-fill-color: inherit;
-        -webkit-text-stroke: 0 transparent !important;
+        padding-top: 80px;
     }
 
     .hero-buttons {

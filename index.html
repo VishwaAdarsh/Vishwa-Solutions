@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +23,10 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Preload Hero Background Image -->
+    <link rel="preload" as="image"
+        href="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&auto=format&fit=crop&q=80">
 </head>
 
 <body>
@@ -49,38 +55,195 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg-texture"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-watermark" aria-hidden="true">CRAFT</div>
-        <div class="container hero-flex">
-            <div class="hero-content">
-                <span class="badge reveal hero-anim hero-anim--1">Est. 2010 | Premium Craftsmanship</span>
-                <h1 class="hero-headline reveal hero-anim hero-anim--2">
-                    <span class="headline-line headline-line--light">Complete</span>
-                    <span class="headline-line headline-line--accent">Furniture</span>
-                    <span class="headline-line headline-line--medium">& Interior Solutions</span>
-                </h1>
-                <p class="reveal hero-anim hero-anim--3">Custom furniture, full house setup, office interiors, aluminium
-                    doors and partitions,
-                    and renovation
-                    work under one roof. Expert craftsmanship you can trust.</p>
-                <div class="hero-buttons reveal hero-anim hero-anim--4">
-                    <a href="contact.html" class="btn btn-primary btn-lg hero-cta-primary">Get Free Consultation</a>
-                    <a href="tel:+919773725281" class="btn btn-secondary btn-lg"><i class="fa-solid fa-phone"></i> Call
-                        / WhatsApp Now</a>
+    <section class="hero" id="hero-slider">
+        <div class="hero-progress-bar"></div>
+
+        <div class="hero-slider-track">
+            <!-- Slide 1 (Existing) -->
+            <div class="hero-slide active"
+                style="--accent: var(--color-accent); --overlay-left: rgba(20, 14, 8, 0.92); --overlay-right: rgba(20, 14, 8, 0.25);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&auto=format&fit=crop&q=80');">
                 </div>
-            </div>
-            <div class="hero-image reveal hero-anim hero-anim--3">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format&fit=crop&q=60"
-                        alt="Modern Interior">
-                    <div class="image-accent"></div>
-                    <div class="hero-image-badge glass-card">
-                        <i class="fa-solid fa-trophy"></i>
-                        <span>500+ Projects Delivered</span>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">CRAFT</div>
+                <div class="container hero-flex">
+                    <div class="hero-content">
+                        <span class="badge hero-anim hero-anim--1">Est. 2010 | Premium Craftsmanship</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-soft-white">Complete</span>
+                            <span class="hero-title-text title-primary color-gold-grad">Furniture</span>
+                            <span class="hero-title-text title-tertiary color-warm-beige">& Interior Solutions</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Custom furniture, full house setup, office interiors,
+                            aluminium doors and partitions, and renovation work under one roof. Expert craftsmanship you
+                            can trust.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="contact.html" class="btn btn-primary btn-lg hero-cta-primary">Get Free
+                                Consultation</a>
+                            <a href="tel:+919773725281" class="btn btn-secondary btn-lg"><i
+                                    class="fa-solid fa-phone"></i> Call / WhatsApp Now</a>
+                        </div>
+                    </div>
+                    <div class="hero-image hero-anim hero-anim--5">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format&fit=crop&q=60"
+                                alt="Modern Interior">
+                            <div class="image-accent"></div>
+                            <div class="hero-image-badge glass-card">
+                                <i class="fa-solid fa-trophy"></i>
+                                <span>500+ Projects Delivered</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Slide 2: Home Interiors -->
+            <div class="hero-slide"
+                style="--accent: #d2b48c; --overlay-left: rgba(0, 0, 0, 0.85); --overlay-right: rgba(0, 0, 0, 0.2);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1613545325278-f24b0cae1224?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9tZSUyMGludGVyaW9yfGVufDB8fDB8fHww');"
+                    loading="lazy"></div>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">HOME</div>
+                <div class="container hero-flex">
+                    <div class="hero-content slide-align-center" style="max-width: 700px;">
+                        <span class="badge hero-anim hero-anim--1">Residential Interior Design</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-soft-gold">Premium</span>
+                            <span class="hero-title-text title-primary color-deep-brown">Home</span>
+                            <span class="hero-title-text title-tertiary color-cream">Interiors</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Custom Beds, Modular Kitchens, Wardrobes, and Living Room
+                            Units designed to elevate your living space.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="services.html#home" class="btn btn-primary btn-lg hero-cta-primary">Know More <i
+                                    class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Commercial Interiors -->
+            <div class="hero-slide"
+                style="--accent: #9ba1a8; --overlay-left: rgba(10, 10, 10, 0.85); --overlay-right: rgba(10, 10, 10, 0.3);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&auto=format&fit=crop&q=80');"
+                    loading="lazy"></div>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">OFFICE</div>
+                <div class="container hero-flex">
+                    <div class="hero-content slide-align-center" style="max-width: 700px;">
+                        <span class="badge hero-anim hero-anim--1">Office & Commercial Setup</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-clean-white">Modern</span>
+                            <span class="hero-title-text title-primary color-matte-gold">Commercial</span>
+                            <span class="hero-title-text title-tertiary color-neutral-grey">Interiors</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Workstations, Executive Cabins, Office Partitions, and Storage
+                            Systems for a productive workspace.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="services.html#office" class="btn btn-primary btn-lg hero-cta-primary">Know More <i
+                                    class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Aluminium Work -->
+            <div class="hero-slide"
+                style="--accent: #e5e5e5; --overlay-left: rgba(0, 0, 0, 0.8); --overlay-right: rgba(0, 0, 0, 0.3);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1920&auto=format&fit=crop&q=80');"
+                    loading="lazy"></div>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">ALUMINIUM</div>
+                <div class="container hero-flex">
+                    <div class="hero-content slide-align-center" style="max-width: 700px;">
+                        <span class="badge hero-anim hero-anim--1">Aluminium Doors & Partitions</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-clean-white">Precision</span>
+                            <span class="hero-title-text title-primary color-silver-grad">Aluminium</span>
+                            <span class="hero-title-text title-tertiary color-gold-accent">Work</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Sliding Windows, Office Glass Partitions, Aluminium Doors, and
+                            high-quality Fabrication Work.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="services.html#aluminium" class="btn btn-primary btn-lg hero-cta-primary">Know More
+                                <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Renovation & Custom Work -->
+            <div class="hero-slide"
+                style="--accent: #b5651d; --overlay-left: rgba(20, 10, 0, 0.85); --overlay-right: rgba(20, 10, 0, 0.2);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1920&auto=format&fit=crop&q=80');"
+                    loading="lazy"></div>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">RENOVATION</div>
+                <div class="container hero-flex">
+                    <div class="hero-content slide-align-center" style="max-width: 700px;">
+                        <span class="badge hero-anim hero-anim--1">Renovation & Redesign</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-beige">Complete</span>
+                            <span class="hero-title-text title-primary color-burnt-gold">Renovation</span>
+                            <span class="hero-title-text title-tertiary color-deep-brown">& Custom Work</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Home Renovation, Office Upgrade, Repair & Restoration, and
+                            Complete Makeover Projects.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="services.html#renovation" class="btn btn-primary btn-lg hero-cta-primary">Know More
+                                <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Ready Made Aluminium Tables & Chairs -->
+            <div class="hero-slide"
+                style="--accent: #8e949c; --overlay-left: rgba(0, 0, 0, 0.85); --overlay-right: rgba(0, 0, 0, 0.3);">
+                <div class="hero-bg-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1629079447840-d018619bcbb5?w=1920&auto=format&fit=crop&q=80');"
+                    loading="lazy"></div>
+                <div class="hero-bg-texture"></div>
+                <div class="hero-glow"></div>
+                <div class="hero-watermark" aria-hidden="true">PRODUCT</div>
+                <div class="container hero-flex">
+                    <div class="hero-content slide-align-center" style="max-width: 700px;">
+                        <span class="badge hero-anim hero-anim--1">Aluminium Furniture Sales</span>
+                        <h1 class="hero-headline hero-anim hero-anim--2">
+                            <span class="hero-title-text title-secondary color-clean-white">Ready Made</span>
+                            <span class="hero-title-text title-primary color-silver-grad">Aluminium</span>
+                            <span class="hero-title-text title-tertiary color-gold-accent">Furniture</span>
+                        </h1>
+                        <p class="hero-anim hero-anim--3">Aluminium Tables, Durable Outdoor Chairs, Commercial Seating,
+                            with Bulk Orders Available.</p>
+                        <div class="hero-buttons hero-anim hero-anim--4">
+                            <a href="contact.html" class="btn btn-primary btn-lg hero-cta-primary">Know More <i
+                                    class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-slider-controls">
+            <div class="hero-slider-dots">
+                <button class="hero-dot active" aria-label="Slide 1"></button>
+                <button class="hero-dot" aria-label="Slide 2"></button>
+                <button class="hero-dot" aria-label="Slide 3"></button>
+                <button class="hero-dot" aria-label="Slide 4"></button>
+                <button class="hero-dot" aria-label="Slide 5"></button>
+                <button class="hero-dot" aria-label="Slide 6"></button>
             </div>
         </div>
 

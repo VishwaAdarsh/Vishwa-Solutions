@@ -213,6 +213,118 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── PREMIUM HERO SLIDER ──
+    const heroSlider = document.getElementById('hero-slider');
+    if (heroSlider) {
+        const slides = heroSlider.querySelectorAll('.hero-slide');
+        const dots = heroSlider.querySelectorAll('.hero-dot');
+        const progressBar = heroSlider.querySelector('.hero-progress-bar');
+
+        let currentSlide = 0;
+        const slideDuration = 5000; // 5 seconds
+        let isHovered = false;
+        let progressStartTime;
+        let remainingTime = slideDuration;
+        let animationFrameId;
+
+        // Ensure initial state
+        slides.forEach((slide, index) => {
+            if (index !== 0) {
+                slide.classList.remove('active');
+            }
+        });
+
+        function updateProgress() {
+            if (isHovered) return;
+
+            const now = Date.now();
+            const elapsed = now - progressStartTime;
+
+            if (elapsed < remainingTime) {
+                const percent = ((slideDuration - remainingTime + elapsed) / slideDuration) * 100;
+                if (progressBar) {
+                    progressBar.style.width = `${percent}%`;
+                }
+                animationFrameId = requestAnimationFrame(updateProgress);
+            } else {
+                nextHeroSlide();
+            }
+        }
+
+        function startProgress() {
+            if (progressBar) {
+                progressBar.style.transition = 'none';
+                progressBar.style.width = '0%';
+                // Force reflow
+                void progressBar.offsetWidth;
+            }
+
+            progressStartTime = Date.now();
+            remainingTime = slideDuration;
+
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = requestAnimationFrame(updateProgress);
+        }
+
+        function pauseProgress() {
+            isHovered = true;
+            cancelAnimationFrame(animationFrameId);
+            if (progressStartTime) {
+                remainingTime -= (Date.now() - progressStartTime);
+            }
+        }
+
+        function resumeProgress() {
+            isHovered = false;
+            progressStartTime = Date.now();
+            animationFrameId = requestAnimationFrame(updateProgress);
+        }
+
+        function goToSlide(index) {
+            if (index === currentSlide) return;
+
+            const prevIndex = currentSlide;
+
+            // Current slide fades out
+            slides[prevIndex].classList.remove('active');
+            slides[prevIndex].classList.add('fade-out');
+            dots[prevIndex].classList.remove('active');
+
+            // New slide activates
+            currentSlide = index;
+            slides[currentSlide].classList.remove('fade-out');
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            // Cleanup fade-out class after transition (800ms)
+            setTimeout(() => {
+                slides[prevIndex].classList.remove('fade-out');
+            }, 800);
+
+            startProgress();
+        }
+
+        function nextHeroSlide() {
+            goToSlide((currentSlide + 1) % slides.length);
+        }
+
+        // Initialize Dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Hover Pause (Desktop only)
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            heroSlider.addEventListener('mouseenter', pauseProgress);
+            heroSlider.addEventListener('mouseleave', resumeProgress);
+        }
+
+        // Start Initial Timer
+        startProgress();
+    }
+
     // ── CONTACT FORM SUBMISSION (only on contact page) ──
     const form = document.getElementById('contactForm');
     if (form) {
