@@ -1,0 +1,17 @@
+﻿{
+  "name": "vishwa-solutions",
+  "version": "1.0.0",
+  "description": "Vishwa Solutions - Premium Furniture and Interior Solutions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "nodemailer": "^6.10.0"
+  },
+  "keywords": [],
+  "author": "Vishwa Solutions",
+  "license": "ISC"
+}

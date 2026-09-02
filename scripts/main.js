@@ -351,34 +351,136 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── CONTACT FORM SUBMISSION (only on contact page) ──
     const form = document.getElementById('contactForm');
     if (form) {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbzLrbcE1nOCpPruNvNsdm06EU0KSehLvErMP3Anq6ZypbssmNxUo8Wi4HAIMSWq0ZoU/exec";
+        const primaryApiURL = "/api/enquiry";
+        const fallbackScriptURL = "https://script.google.com/macros/s/AKfycbzLrbcE1nOCpPruNvNsdm06EU0KSehLvErMP3Anq6ZypbssmNxUo8Wi4HAIMSWq0ZoU/exec";
 
-        form.addEventListener('submit', e => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new FormData(form)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        const modal = document.getElementById('successModal');
-                        if (modal) {
-                            modal.style.display = 'flex';
-                            form.reset();
-                            setTimeout(() => {
-                                modal.style.display = 'none';
-                            }, 3000);
-                        }
-                    } else {
-                        alert('Submission failed');
-                    }
-                })
-                .catch(err => {
-                    console.error(err);
-                    alert('Error! Please try again');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+
+            // 1. Client-side input validation
+            const nameInput = form.querySelector('input[name="name"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            const emailInput = form.querySelector('input[name="email"]');
+
+            const nameVal = nameInput ? nameInput.value.trim() : '';
+            const phoneVal = phoneInput ? phoneInput.value.trim() : '';
+            const emailVal = emailInput ? emailInput.value.trim() : '';
+
+            if (nameVal.length < 2) {
+                alert('Please enter your full name.');
+                if (nameInput) nameInput.focus();
+                return;
+            }
+
+            const phoneDigits = phoneVal.replace(/[^0-9+]/g, '');
+            if (phoneDigits.length < 7) {
+                alert('Please enter a valid contact phone number.');
+                if (phoneInput) phoneInput.focus();
+                return;
+            }
+
+            if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+                alert('Please enter a valid email address, or leave it blank.');
+                if (emailInput) emailInput.focus();
+                return;
+            }
+
+            // 2. Set Loading State (prevent duplicate submissions)
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+                submitBtn.style.opacity = '0.8';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+
+            function restoreButton() {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+                    submitBtn.style.opacity = '';
+                    submitBtn.style.cursor = '';
+                }
+            }
+
+            function showSuccessModal() {
+                const modal = document.getElementById('successModal');
+                if (modal) {
+                    modal.style.display = 'flex';
+                    form.reset();
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 4000);
+                }
+            }
+
+            // 3. Construct form payload
+            const formData = new FormData(form);
+            const payload = Object.fromEntries(formData.entries());
+
+            try {
+                // Try primary serverless backend (/api/enquiry)
+                const response = await fetch(primaryApiURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
                 });
+
+                // If the primary endpoint exists (2xx or 4xx/5xx returned by handler)
+                if (response.status !== 404 && response.status !== 405) {
+                    const result = await response.json();
+                    if (response.ok && result.status === 'success') {
+                        showSuccessModal();
+                    } else if (result.status === 'partial') {
+                        showSuccessModal();
+                    } else {
+                        alert(result.message || 'Unable to submit enquiry right now. Please try again or call us at +91 9819215853 / +91 9773725281.');
+                    }
+                    restoreButton();
+                    return;
+                }
+
+                // If 404 (static preview without serverless runtime), fallback directly to Google Apps Script
+                console.info('[Enquiry] Serverless endpoint not available on this host. Using direct Google Sheets fallback.');
+                const fallbackResponse = await fetch(fallbackScriptURL, {
+                    method: 'POST',
+                    body: formData
+                });
+                const fallbackData = await fallbackResponse.json();
+
+                if (fallbackData.status === 'success') {
+                    showSuccessModal();
+                } else {
+                    alert('Submission failed. Please call us directly at +91 9819215853 / +91 9773725281.');
+                }
+            } catch (err) {
+                console.warn('[Enquiry] Primary API request failed, attempting direct Google Apps Script fallback...', err);
+
+                // Fallback attempt in case of network issue reaching /api/enquiry
+                try {
+                    const fallbackResponse = await fetch(fallbackScriptURL, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const fallbackData = await fallbackResponse.json();
+
+                    if (fallbackData.status === 'success') {
+                        showSuccessModal();
+                    } else {
+                        alert('Unable to submit enquiry right now. Please try again or contact us directly at +91 9819215853 / +91 9773725281.');
+                    }
+                } catch (fallbackErr) {
+                    console.error('[Enquiry Fatal Error]', fallbackErr);
+                    alert('Unable to submit your enquiry right now. Please try again or contact us directly at +91 9819215853 / +91 9773725281.');
+                }
+            } finally {
+                restoreButton();
+            }
         });
     }
 
