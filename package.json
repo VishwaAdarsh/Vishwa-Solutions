@@ -1,11 +1,12 @@
-﻿{
+{
   "name": "vishwa-solutions",
   "version": "1.0.0",
   "description": "Vishwa Solutions - Premium Furniture and Interior Solutions",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "echo Build complete"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
