@@ -238,22 +238,34 @@ async function handler(req, res) {
         const smtpPass = process.env.SMTP_PASSWORD;
         const smtpHost = process.env.SMTP_HOST || (smtpUser && smtpUser.includes('@gmail.com') ? 'smtp.gmail.com' : undefined);
 
-        if (smtpHost && smtpUser && smtpPass) {
+        if (smtpUser && smtpPass) {
             try {
+                const cleanPass = String(smtpPass).replace(/\s+/g, '');
                 const port = parseInt(process.env.SMTP_PORT || '587', 10);
                 const isSecure = process.env.SMTP_SECURE === 'true' || port === 465;
 
-                const transporter = nodemailer.createTransport({
-                    host: smtpHost,
-                    port: port,
-                    secure: isSecure,
-                    auth: {
-                        user: smtpUser,
-                        pass: smtpPass
-                    },
-                    connectionTimeout: 10000,
-                    greetingTimeout: 5000
-                });
+                const isGmail = (!smtpHost || smtpHost === 'smtp.gmail.com' || (smtpUser && smtpUser.endsWith('@gmail.com')));
+                const transportOptions = isGmail
+                    ? {
+                        service: 'gmail',
+                        auth: {
+                            user: smtpUser,
+                            pass: cleanPass
+                        }
+                    }
+                    : {
+                        host: smtpHost,
+                        port: port,
+                        secure: isSecure,
+                        auth: {
+                            user: smtpUser,
+                            pass: cleanPass
+                        },
+                        connectionTimeout: 10000,
+                        greetingTimeout: 5000
+                    };
+
+                const transporter = nodemailer.createTransport(transportOptions);
 
                 const notificationRecipient = process.env.NOTIFICATION_EMAIL || DEFAULT_NOTIFICATION_EMAIL;
                 const fromAddress = process.env.SMTP_FROM || `"Vishwa Solutions" <${smtpUser}>`;

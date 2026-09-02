@@ -36,8 +36,8 @@ const server = http.createServer((req, res) => {
         return this;
     };
 
-    // Route /api/enquiry
-    if (req.url.startsWith('/api/enquiry')) {
+    // Route /api/enquiry and /.netlify/functions/enquiry
+    if (req.url.startsWith('/api/enquiry') || req.url.startsWith('/.netlify/functions/enquiry')) {
         let body = '';
         req.on('data', chunk => {
             body += chunk.toString();

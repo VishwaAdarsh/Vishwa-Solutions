@@ -421,18 +421,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const payload = Object.fromEntries(formData.entries());
 
             try {
-                // Try primary serverless backend (/api/enquiry)
-                const response = await fetch(primaryApiURL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+                // 1. Try primary endpoint (/api/enquiry)
+                let response = null;
+                try {
+                    response = await fetch(primaryApiURL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (netErr) {
+                    console.warn('[Enquiry] Primary /api/enquiry unreachable:', netErr);
+                }
 
-                // If the primary endpoint exists (2xx or 4xx/5xx returned by handler)
-                if (response.status !== 404 && response.status !== 405) {
+                // 2. If 404/unreachable on Netlify, try native Netlify function URL
+                if (!response || response.status === 404 || response.status === 405) {
+                    try {
+                        const netlifyResponse = await fetch('/.netlify/functions/enquiry', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify(payload)
+                        });
+                        if (netlifyResponse && netlifyResponse.status !== 404 && netlifyResponse.status !== 405) {
+                            response = netlifyResponse;
+                        }
+                    } catch (netlifyErr) {
+                        console.warn('[Enquiry] Direct Netlify function endpoint unreachable:', netlifyErr);
+                    }
+                }
+
+                // If a serverless endpoint responded
+                if (response && response.status !== 404 && response.status !== 405) {
                     const result = await response.json();
                     if (response.ok && result.status === 'success') {
                         showSuccessModal();
@@ -445,8 +469,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // If 404 (static preview without serverless runtime), fallback directly to Google Apps Script
-                console.info('[Enquiry] Serverless endpoint not available on this host. Using direct Google Sheets fallback.');
+                // 3. Fallback directly to Google Apps Script if serverless runtime is unavailable
+                console.info('[Enquiry] Serverless endpoint unavailable on this host. Using direct Google Sheets fallback.');
                 const fallbackResponse = await fetch(fallbackScriptURL, {
                     method: 'POST',
                     body: formData
