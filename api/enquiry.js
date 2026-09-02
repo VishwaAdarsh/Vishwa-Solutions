@@ -135,7 +135,7 @@ function buildHtmlEmail({ name, phone, email, service, message, submissionTime }
 /**
  * Main handler compatible with Vercel and Node HTTP.
  */
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
     // Enable CORS for frontend clients
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -234,9 +234,9 @@ module.exports = async function handler(req, res) {
 
         // 4. Send SMTP Email Notification
         let emailSuccess = false;
-        const smtpHost = process.env.SMTP_HOST;
-        const smtpUser = process.env.SMTP_USER;
+        const smtpUser = process.env.SMTP_USER || DEFAULT_NOTIFICATION_EMAIL;
         const smtpPass = process.env.SMTP_PASSWORD;
+        const smtpHost = process.env.SMTP_HOST || (smtpUser && smtpUser.includes('@gmail.com') ? 'smtp.gmail.com' : undefined);
 
         if (smtpHost && smtpUser && smtpPass) {
             try {
@@ -256,7 +256,7 @@ module.exports = async function handler(req, res) {
                 });
 
                 const notificationRecipient = process.env.NOTIFICATION_EMAIL || DEFAULT_NOTIFICATION_EMAIL;
-                const fromAddress = process.env.SMTP_FROM || `"Vishwa Solutions Enquiries" <${smtpUser}>`;
+                const fromAddress = process.env.SMTP_FROM || `"Vishwa Solutions" <${smtpUser}>`;
 
                 const mailOptions = {
                     from: fromAddress,
@@ -318,4 +318,60 @@ Submitted on: ${submissionTime}
             message: 'Unable to submit your enquiry right now. Please try again or call us at +91 9819215853 / +91 9773725281.'
         });
     }
+}
+
+module.exports = handler;
+
+// Netlify Functions compatibility export
+module.exports.handler = async function (event) {
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': '*',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS'
+            },
+            body: ''
+        };
+    }
+
+    let parsedBody = {};
+    if (event.body) {
+        try {
+            parsedBody = JSON.parse(event.body);
+        } catch {
+            const parsed = new URLSearchParams(event.body);
+            parsedBody = Object.fromEntries(parsed.entries());
+        }
+    }
+
+    let resStatusCode = 200;
+    let resPayload = {};
+
+    const mockRes = {
+        setHeader() {},
+        status(code) {
+            resStatusCode = code;
+            return this;
+        },
+        json(data) {
+            resPayload = data;
+            return this;
+        },
+        end() {
+            return this;
+        }
+    };
+
+    await handler({ method: event.httpMethod, body: parsedBody }, mockRes);
+
+    return {
+        statusCode: resStatusCode,
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(resPayload)
+    };
 };
