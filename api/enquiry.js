@@ -234,41 +234,35 @@ async function handler(req, res) {
 
         // 4. Send SMTP Email Notification
         let emailSuccess = false;
-        const smtpUser = process.env.SMTP_USER || DEFAULT_NOTIFICATION_EMAIL;
-        const smtpPass = process.env.SMTP_PASSWORD;
-        const smtpHost = process.env.SMTP_HOST || (smtpUser && smtpUser.includes('@gmail.com') ? 'smtp.gmail.com' : undefined);
+        let smtpErrorDetails = null;
+        const smtpUser = process.env.SMTP_USER || process.env.EMAIL_USER || DEFAULT_NOTIFICATION_EMAIL;
+        const smtpPass = process.env.SMTP_PASSWORD || process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
+        const smtpHost = process.env.SMTP_HOST || 'smtp.gmail.com';
+        const notificationRecipient = process.env.NOTIFICATION_EMAIL || process.env.BUSINESS_EMAIL || DEFAULT_NOTIFICATION_EMAIL;
+        const fromAddress = process.env.SMTP_FROM || `"Vishwa Solutions" <${smtpUser}>`;
+
+        console.log(`[SMTP Diagnostics] Configuration loaded: host=${smtpHost}, user=${smtpUser}, recipient=${notificationRecipient}, passwordSet=${Boolean(smtpPass)}`);
 
         if (smtpUser && smtpPass) {
             try {
-                const cleanPass = String(smtpPass).replace(/\s+/g, '');
+                const cleanPass = String(smtpPass).replace(/['"]/g, '').replace(/\s+/g, '');
                 const port = parseInt(process.env.SMTP_PORT || '587', 10);
-                const isSecure = process.env.SMTP_SECURE === 'true' || port === 465;
+                const isSecure = process.env.SMTP_SECURE !== undefined ? process.env.SMTP_SECURE === 'true' : (port === 465);
 
-                const isGmail = (!smtpHost || smtpHost === 'smtp.gmail.com' || (smtpUser && smtpUser.endsWith('@gmail.com')));
-                const transportOptions = isGmail
-                    ? {
-                        service: 'gmail',
-                        auth: {
-                            user: smtpUser,
-                            pass: cleanPass
-                        }
-                    }
-                    : {
-                        host: smtpHost,
-                        port: port,
-                        secure: isSecure,
-                        auth: {
-                            user: smtpUser,
-                            pass: cleanPass
-                        },
-                        connectionTimeout: 10000,
-                        greetingTimeout: 5000
-                    };
+                console.log(`[SMTP Diagnostics] Connecting to ${smtpHost}:${port} (secure=${isSecure}) as ${smtpUser}...`);
 
-                const transporter = nodemailer.createTransport(transportOptions);
-
-                const notificationRecipient = process.env.NOTIFICATION_EMAIL || DEFAULT_NOTIFICATION_EMAIL;
-                const fromAddress = process.env.SMTP_FROM || `"Vishwa Solutions" <${smtpUser}>`;
+                const transporter = nodemailer.createTransport({
+                    host: smtpHost,
+                    port: port,
+                    secure: isSecure,
+                    auth: {
+                        user: smtpUser,
+                        pass: cleanPass
+                    },
+                    connectionTimeout: 15000,
+                    greetingTimeout: 10000,
+                    socketTimeout: 15000
+                });
 
                 const mailOptions = {
                     from: fromAddress,
@@ -285,7 +279,7 @@ Email: ${cleanPayload.email || 'Not Provided'}
 Service: ${cleanPayload.service}
 
 Message:
-${cleanPayload.message || 'No additional message.'}
+${cleanPayload.message || 'No additional message provided.'}
 
 Submitted on: ${submissionTime}
                     `.trim(),
@@ -295,32 +289,38 @@ Submitted on: ${submissionTime}
                     })
                 };
 
-                await transporter.sendMail(mailOptions);
+                console.log(`[SMTP Diagnostics] Sending enquiry email to ${notificationRecipient}...`);
+                const sendInfo = await transporter.sendMail(mailOptions);
                 emailSuccess = true;
-                console.log(`[SMTP Notification] Email successfully delivered to ${notificationRecipient}`);
+                console.log(`[SMTP Diagnostics] Email accepted! Message ID: ${sendInfo.messageId}`);
             } catch (smtpErr) {
-                // Log technical error server-side, do not expose to customer
-                console.error('[SMTP Notification Error]', smtpErr.message);
+                smtpErrorDetails = smtpErr.message || 'SMTP dispatch error';
+                console.error('[SMTP Diagnostics Error]', smtpErr.message, smtpErr.code ? `(Code: ${smtpErr.code})` : '');
             }
         } else {
-            console.log('[SMTP Notification] SMTP credentials not set in environment. Skipping email dispatch.');
+            smtpErrorDetails = 'SMTP_PASSWORD environment variable is not configured on the hosting platform.';
+            console.warn('[SMTP Diagnostics Warning] SMTP_PASSWORD environment variable is not set. Email notification skipped.');
         }
 
         // 5. Response logic based on failure matrix
         if (sheetSuccess || emailSuccess) {
             res.status(200).json({
                 status: 'success',
-                message: 'Thank you for contacting Vishwa Solutions. We have received your enquiry and will get back to you shortly.',
+                message: 'Thank you for contacting Vishwa Solutions. We have received your enquiry and will get back to you.',
                 details: {
                     sheetsRecorded: sheetSuccess,
-                    emailNotified: emailSuccess
+                    emailNotified: emailSuccess,
+                    diagnostics: emailSuccess ? 'Email notification sent successfully.' : smtpErrorDetails
                 }
             });
         } else {
             // Neither succeeded
             res.status(500).json({
                 status: 'error',
-                message: 'Unable to submit your enquiry right now. Please try again or contact us directly at +91 9819215853 / +91 9773725281.'
+                message: 'Unable to submit your enquiry right now. Please try again or contact us directly at +91 9819215853 / +91 9773725281.',
+                details: {
+                    diagnostics: smtpErrorDetails
+                }
             });
         }
     } catch (err) {
