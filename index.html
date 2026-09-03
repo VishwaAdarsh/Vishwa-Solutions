@@ -6,10 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishwa Solutions</title>
+    <title>Vishwa Solutions | Master Carpentry, Custom Furniture & Aluminium Fabrication in Mumbai</title>
     <link rel="icon" sizes="64x64" href="logo.jpg">
     <meta name="description"
-        content="Complete home and office furniture solutions, aluminium work, and renovation services by experienced contractors.">
+        content="Professional carpentry, custom wooden furniture, modular kitchens, office interior fit-outs, aluminium fabrication, and renovation services in Andheri(E), Mumbai.">
+    <meta property="og:title" content="Vishwa Solutions | Master Carpentry & Custom Furniture in Mumbai">
+    <meta property="og:description" content="10+ years experienced carpenters delivering custom home furniture, modern office interiors, aluminium fabrication & renovations across Mumbai.">
+    <meta property="og:image" content="assets/images/projects/residential-living.jpg">
+    <meta property="og:type" content="website">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +31,40 @@
     <!-- Preload Hero Background Image -->
     <link rel="preload" as="image"
         href="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1920&auto=format&fit=crop&q=80">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Vishwa Solutions",
+      "alternateName": "Vishwakarma Furniture Works",
+      "description": "Professional carpentry, custom wooden furniture manufacturing, office interiors, aluminium fabrication, and renovation services.",
+      "url": "https://vishwasolutions.netlify.app/",
+      "logo": "https://vishwasolutions.netlify.app/logo.jpg",
+      "image": "https://vishwasolutions.netlify.app/assets/images/projects/residential-living.jpg",
+      "telephone": ["+919819215853", "+919773725281"],
+      "email": "vishwasolutions199@gmail.com",
+      "founder": {
+        "@type": "Person",
+        "name": "Ramlakhan Vishwakarma",
+        "jobTitle": "Proprietor & Master Craftsman"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "MIDC",
+        "addressLocality": "Andheri (East)",
+        "addressRegion": "Mumbai, Maharashtra",
+        "postalCode": "400093",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Mumbai"
+      },
+      "priceRange": "$$"
+    }
+    </script>
 </head>
 
 <body>
@@ -42,13 +80,13 @@
             </button>
             <nav class="nav-links">
                 <a href="index.html" class="active">Home</a>
-                <a href="about.html">AboutUs</a>
+                <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
                 <a href="gallery.html">Gallery</a>
                 <a href="contact.html">Contact</a>
                 <a href="contact.html" class="btn btn-primary" style="color: white; padding: 8px 16px;">
                     Enquiry</a>
-                <button id="themeToggle" class="theme-toggle">🌙</button>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">🌙</button>
 
             </nav>
         </div>
@@ -539,9 +577,9 @@
                     <h4>Contact Us</h4>
                     <ul>
                         <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> <a href="tel:+919819215853">+91 9819215853</a> / <a href="tel:+919773725281">+91 9773725281</a></li>
-                        <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> <a href="https://wa.me/919819215853" target="_blank">+91 9819215853</a> / <a href="https://wa.me/919773725281" target="_blank">+91 9773725281</a></li>
+                        <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> <a href="https://wa.me/919819215853?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9819215853</a> / <a href="https://wa.me/919773725281?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9773725281</a></li>
                         <li><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> <a href="mailto:vishwasolutions199@gmail.com">vishwasolutions199@gmail.com</a></li>
-                        <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Andheri(E), Mumbai, India</li>
+                        <li><i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> MIDC, Andheri(E), Mumbai 400093</li>
                     </ul>
                 </div>
             </div>
@@ -552,13 +590,27 @@
     </footer>
 
     <!-- Floating Buttons -->
-    <div class="back-to-top" id="backToTop">
+    <div class="back-to-top" id="backToTop" aria-label="Back to Top">
         <i class="fa-solid fa-arrow-up"></i>
     </div>
 
-    <a href="https://wa.me/919819215853" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/919819215853?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Mobile Sticky Action Bar (Phone Only) -->
+    <aside class="mobile-sticky-bar" aria-label="Quick Mobile Actions">
+        <a href="https://wa.me/919819215853?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work."
+            class="mobile-sticky-item mobile-sticky-item--whatsapp" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp</span>
+        </a>
+        <a href="tel:+919819215853" class="mobile-sticky-item mobile-sticky-item--call">
+            <i class="fa-solid fa-phone"></i> <span>Call Now</span>
+        </a>
+        <a href="contact.html" class="mobile-sticky-item mobile-sticky-item--enquiry">
+            <i class="fa-solid fa-calculator"></i> <span>Enquiry</span>
+        </a>
+    </aside>
 
     <!-- Scripts -->
     <script src="scripts/main.js"></script>

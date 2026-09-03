@@ -283,6 +283,11 @@ p {
     border-radius: var(--radius-lg);
 }
 
+/* Mobile Sticky Bar (Hidden by default on desktop) */
+.mobile-sticky-bar {
+    display: none;
+}
+
 /* ==========================================================================
    HEADER & NAVIGATION
    ========================================================================== */
@@ -2872,22 +2877,80 @@ body.lightbox-open {
     }
 
     /* Floating Action Buttons with Safe Area */
+    /* Floating Action Buttons with Safe Area */
     .back-to-top {
-        bottom: max(16px, env(safe-area-inset-bottom, 16px));
+        bottom: calc(68px + env(safe-area-inset-bottom, 14px));
         right: 16px;
         width: 42px;
         height: 42px;
         font-size: 1rem;
-        z-index: 999;
+        z-index: 995;
     }
 
     .whatsapp-float {
-        bottom: max(16px, env(safe-area-inset-bottom, 16px));
+        bottom: calc(68px + env(safe-area-inset-bottom, 14px));
         left: 16px;
         width: 48px;
         height: 48px;
         font-size: 1.4rem;
-        z-index: 999;
+        z-index: 995;
+    }
+
+    body {
+        padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .mobile-sticky-bar {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1.2fr;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: calc(56px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        background: rgba(36, 25, 18, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(197, 160, 89, 0.3);
+        z-index: 998;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .mobile-sticky-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: #ffffff;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-sticky-item:last-child {
+        border-right: none;
+    }
+
+    .mobile-sticky-item i {
+        font-size: 15px;
+    }
+
+    .mobile-sticky-item--whatsapp {
+        color: #25d366;
+    }
+
+    .mobile-sticky-item--call {
+        color: #ffffff;
+    }
+
+    .mobile-sticky-item--enquiry {
+        background: var(--color-accent);
+        color: #241912;
+        font-weight: 700;
     }
 }
 
