@@ -1889,39 +1889,59 @@ header.scrolled .navbar {
     position: relative;
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .input-wrap i {
     position: absolute;
     left: 14px;
-    color: var(--color-text-light);
-    font-size: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent, #c5a059);
+    font-size: 0.95rem;
+    pointer-events: none;
+    z-index: 2;
+    transition: color 0.2s ease;
 }
 
 .input-wrap input,
 .input-wrap select,
 .input-wrap textarea {
     width: 100%;
-    padding: 14px 14px 14px 42px;
+    padding: 13px 14px 13px 44px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-color);
     font-family: inherit;
-    font-size: 16px;
+    font-size: 15.5px;
     color: var(--color-text-primary);
     background: var(--color-bg-card);
     transition: var(--transition-normal);
+}
+
+.input-wrap.input-wrap--textarea,
+.input-wrap:has(textarea) {
+    align-items: flex-start;
+}
+
+.input-wrap.input-wrap--textarea i,
+.input-wrap:has(textarea) i {
+    top: 16px;
+    transform: none;
 }
 
 .input-wrap input:focus,
 .input-wrap select:focus,
 .input-wrap textarea:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(61, 43, 31, 0.1);
+    border-color: var(--color-accent, #c5a059);
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.18);
 }
 
 .input-wrap textarea {
     resize: vertical;
+    min-height: 110px;
+    padding-top: 14px;
+    line-height: 1.5;
 }
 
 .premium-form .btn {
@@ -2848,9 +2868,14 @@ body.lightbox-open {
     .input-wrap textarea {
         font-size: 16px !important;
         min-height: 48px;
-        padding: 12px 14px;
+        padding: 12px 14px 12px 44px !important;
         border-radius: 8px;
         width: 100%;
+    }
+
+    .input-wrap textarea {
+        padding-top: 14px !important;
+        min-height: 100px;
     }
 
     .submit-btn {
@@ -2877,9 +2902,8 @@ body.lightbox-open {
     }
 
     /* Floating Action Buttons with Safe Area */
-    /* Floating Action Buttons with Safe Area */
     .back-to-top {
-        bottom: calc(68px + env(safe-area-inset-bottom, 14px));
+        bottom: calc(66px + env(safe-area-inset-bottom, 14px));
         right: 16px;
         width: 42px;
         height: 42px;
@@ -2887,13 +2911,9 @@ body.lightbox-open {
         z-index: 995;
     }
 
+    /* Hide redundant round floating WhatsApp button on mobile since we have the bottom sticky bar */
     .whatsapp-float {
-        bottom: calc(68px + env(safe-area-inset-bottom, 14px));
-        left: 16px;
-        width: 48px;
-        height: 48px;
-        font-size: 1.4rem;
-        z-index: 995;
+        display: none !important;
     }
 
     body {
@@ -2902,33 +2922,36 @@ body.lightbox-open {
 
     .mobile-sticky-bar {
         display: grid;
-        grid-template-columns: 1fr 1fr 1.2fr;
+        grid-template-columns: 1fr 1fr 1.15fr;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        height: calc(56px + env(safe-area-inset-bottom, 0px));
+        height: calc(54px + env(safe-area-inset-bottom, 0px));
         padding-bottom: env(safe-area-inset-bottom, 0px);
-        background: rgba(36, 25, 18, 0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(197, 160, 89, 0.3);
+        background: rgba(36, 25, 18, 0.98);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(197, 160, 89, 0.35);
         z-index: 998;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.35);
     }
 
     .mobile-sticky-item {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 6px;
+        gap: 3px;
+        padding: 5px 2px;
         color: #ffffff;
         font-family: var(--font-heading);
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 600;
         text-decoration: none;
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+        white-space: nowrap;
     }
 
     .mobile-sticky-item:last-child {
@@ -2936,7 +2959,8 @@ body.lightbox-open {
     }
 
     .mobile-sticky-item i {
-        font-size: 15px;
+        font-size: 16px;
+        margin: 0;
     }
 
     .mobile-sticky-item--whatsapp {
@@ -2944,7 +2968,7 @@ body.lightbox-open {
     }
 
     .mobile-sticky-item--call {
-        color: #ffffff;
+        color: #f5f5f5;
     }
 
     .mobile-sticky-item--enquiry {
