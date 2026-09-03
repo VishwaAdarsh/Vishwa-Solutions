@@ -7,7 +7,11 @@
 :root {
     /* Core Colors — Simplified Palette */
     --color-primary: #3d2b1f;
+    --color-primary-dark: #241912;
+    --color-primary-light: #5a4130;
     --color-accent: #c5a059;
+    --color-accent-light: #dfc288;
+    --color-accent-glow: rgba(197, 160, 89, 0.4);
 
     /* Backgrounds & Neutrals */
     --color-bg-main: #fcfaf7;
@@ -1453,8 +1457,9 @@ header.scrolled .navbar {
    FINAL CTA SECTION
    ========================================================================== */
 .final-cta {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-    color: white;
+    background-color: #241912;
+    background: linear-gradient(135deg, var(--color-primary-dark, #241912) 0%, var(--color-primary, #3d2b1f) 100%);
+    color: #ffffff;
     position: relative;
     overflow: hidden;
     padding: 120px 0;
