@@ -109,8 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let counterStarted = false;
 
     const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -20px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -132,30 +132,52 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // Dedicated stats section observer for guaranteed triggering
+    const statsSectionEl = document.querySelector('.stats-section');
+    if (statsSectionEl) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counterStarted) {
+                    counterStarted = true;
+                    startCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px 60px 0px" });
+
+        statsObserver.observe(statsSectionEl);
+    }
+
     // ── COUNTER ANIMATION ──
     function startCounters() {
         const stats = document.querySelectorAll('.stat-item h3');
         if (!stats.length) return;
 
         stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-count'));
+            const target = parseInt(stat.getAttribute('data-count') || stat.getAttribute('data-target'), 10);
             if (isNaN(target)) return;
 
-            const suffix = stat.innerText.replace(/[0-9]/g, '');
-            let count = 0;
-            const duration = 2000;
-            const increment = target / (duration / 16);
+            const suffix = stat.getAttribute('data-suffix') || (target === 100 ? '%' : '+');
+            const duration = 1600;
+            const startTime = performance.now();
 
-            const updateCount = () => {
-                count += increment;
-                if (count < target) {
-                    stat.innerText = Math.ceil(count) + suffix;
-                    requestAnimationFrame(updateCount);
+            const updateCounter = (now) => {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                // Smooth ease-out cubic curve (0 -> target)
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(easeProgress * target);
+
+                stat.innerText = currentVal + suffix;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
                 } else {
                     stat.innerText = target + suffix;
                 }
             };
-            updateCount();
+
+            requestAnimationFrame(updateCounter);
         });
     }
 
