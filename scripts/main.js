@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
             document.body.classList.remove('menu-open');
             if (mobileBtn) {
+                mobileBtn.setAttribute('aria-expanded', 'false');
+                mobileBtn.setAttribute('aria-label', 'Open navigation menu');
                 const icon = mobileBtn.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-times');
@@ -31,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = navLinks.classList.toggle('active');
             document.body.classList.toggle('menu-open', isOpen);
             const icon = mobileBtn.querySelector('i');
+            mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            mobileBtn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
             if (icon) {
                 if (isOpen) {
                     icon.classList.remove('fa-bars');
@@ -353,6 +357,40 @@ document.addEventListener('DOMContentLoaded', () => {
             goToSlide((currentSlide + 1) % slides.length);
         }
 
+        function prevHeroSlide() {
+            goToSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        // Touch Swipe Handling for Mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        heroSlider.addEventListener('touchstart', (e) => {
+            if (e.touches && e.touches[0]) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                pauseProgress();
+            }
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchend', (e) => {
+            if (e.changedTouches && e.changedTouches[0]) {
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const diffX = touchEndX - touchStartX;
+                const diffY = touchEndY - touchStartY;
+
+                if (Math.abs(diffX) > 45 && Math.abs(diffX) > Math.abs(diffY)) {
+                    if (diffX < 0) {
+                        nextHeroSlide();
+                    } else {
+                        prevHeroSlide();
+                    }
+                }
+                resumeProgress();
+            }
+        }, { passive: true });
+
         // Initialize Dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
@@ -542,6 +580,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightboxImg.alt = img.alt || 'Gallery Preview';
                 lightbox.classList.add('active');
                 document.body.classList.add('lightbox-open');
+                if (lightboxClose) {
+                    lightboxClose.focus();
+                }
             }
         }
 
@@ -555,11 +596,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 const img = card.querySelector('img');
                 openLightbox(img);
             });
+            // Allow keyboard activation (Enter)
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', 'Open image preview');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    const img = card.querySelector('img');
+                    openLightbox(img);
+                }
+            });
         });
 
         if (lightboxClose) {
             lightboxClose.addEventListener('click', () => {
                 closeLightbox();
+            });
+            lightboxClose.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    closeLightbox();
+                }
             });
         }
 

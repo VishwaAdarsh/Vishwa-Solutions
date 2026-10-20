@@ -570,6 +570,7 @@ header.scrolled .navbar {
 }
 
 .hero-dot {
+    position: relative;
     width: 32px;
     height: 4px;
     background: rgba(255, 255, 255, 0.3);
@@ -578,6 +579,16 @@ header.scrolled .navbar {
     cursor: pointer;
     transition: all 0.3s ease;
     padding: 0;
+    touch-action: manipulation;
+}
+
+.hero-dot::after {
+    content: '';
+    position: absolute;
+    top: -18px;
+    bottom: -18px;
+    left: -8px;
+    right: -8px;
 }
 
 .hero-dot:hover {
@@ -1444,12 +1455,23 @@ header.scrolled .navbar {
 }
 
 .slider-dots .dot {
+    position: relative;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background: rgba(61, 43, 31, 0.2);
     cursor: pointer;
     transition: var(--transition-normal);
+    touch-action: manipulation;
+}
+
+.slider-dots .dot::after {
+    content: '';
+    position: absolute;
+    top: -16px;
+    bottom: -16px;
+    left: -10px;
+    right: -10px;
 }
 
 .slider-dots .dot.active {
@@ -2576,22 +2598,22 @@ body.lightbox-open {
 
     .nav-links {
         position: fixed;
-        top: 0;
+        top: 64px;
         left: 0;
         width: 100%;
-        height: 100vh;
-        height: 100dvh;
+        height: calc(100vh - 64px);
+        height: calc(100dvh - 64px);
         background: var(--color-bg-card);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
-        padding: 85px var(--space-lg) var(--space-xl);
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        padding: 20px var(--space-lg) calc(var(--space-xl) + 64px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
         transform: translateX(100%);
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 4px;
         align-items: stretch;
-        z-index: 1000;
+        z-index: 999;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
@@ -2602,13 +2624,15 @@ body.lightbox-open {
 
     .nav-links a {
         width: 100%;
-        padding: 14px 16px;
+        min-height: 44px;
+        padding: 13px 16px;
         border-bottom: 1px solid var(--border-color);
         font-size: 1.05rem;
         font-weight: 600;
         border-radius: var(--radius-sm);
         display: flex;
         align-items: center;
+        touch-action: manipulation;
     }
 
     .nav-links a.active {
@@ -2751,6 +2775,15 @@ body.lightbox-open {
         width: 32px;
     }
 
+    .hero-dot::after {
+        content: '';
+        position: absolute;
+        top: -18px;
+        bottom: -18px;
+        left: -8px;
+        right: -8px;
+    }
+
     /* Stats Grid */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -2889,10 +2922,65 @@ body.lightbox-open {
         border-radius: 10px;
     }
 
-    /* Footer */
+    /* Footer Touch Targets */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 28px;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 2px;
+    }
+
+    .footer-column ul li a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 6px 0;
+        font-size: 0.95rem;
+        touch-action: manipulation;
+    }
+
+    .footer-column p a[href^="tel:"],
+    .footer-column p a[href^="mailto:"] {
+        display: inline-flex;
+        align-items: center;
+        min-height: 42px;
+        padding: 4px 0;
+        touch-action: manipulation;
+    }
+
+    /* Gallery Card Touch Friendly Overlay */
+    .gallery-card-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(25, 16, 10, 0.92) 0%, rgba(25, 16, 10, 0.45) 45%, transparent 70%);
+        padding: 16px;
+    }
+
+    .gallery-card-overlay h3 {
+        font-size: 1.05rem;
+    }
+
+    .gallery-card-overlay > i {
+        display: none;
+    }
+
+    /* Lightbox Close Touch Target */
+    .lightbox-close {
+        top: 16px;
+        right: 16px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10002;
     }
 
     .story-cta {
@@ -3026,14 +3114,19 @@ body.lightbox-open {
     }
 
     .filter-controls {
-        gap: 6px;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin-bottom: 22px;
         justify-content: center;
     }
 
     .filter-btn {
-        padding: 7px 13px;
-        font-size: 0.8rem;
+        min-height: 42px;
+        padding: 9px 16px;
+        font-size: 0.85rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        touch-action: manipulation;
     }
 
     .lightbox-img {
@@ -3133,12 +3226,30 @@ body.lightbox-open {
     }
 
     .filter-btn {
-        padding: 6px 10px;
-        font-size: 0.75rem;
+        min-height: 40px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
 
     .contact-panel,
     .form-container {
         padding: 18px 12px;
+    }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY — PREFERS REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-slide {
+        transition: opacity 0.2s ease !important;
     }
 }

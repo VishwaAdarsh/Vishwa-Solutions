@@ -35,10 +35,10 @@
             <a href="index.html" class="logo">
                 <img src="logo.jpg" alt="Vishwa Solutions" class="logo-img"><span>Vishwa Solutions</span>
             </a>
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNavigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
-            <nav class="nav-links">
+            <nav class="nav-links" id="primaryNavigation" aria-label="Primary Navigation">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a href="services.html">Services</a>
@@ -129,33 +129,33 @@
                         <form id="contactForm" class="premium-form">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Full Name <span style="color: var(--color-accent);">*</span></label>
+                                    <label for="contactName">Full Name <span style="color: var(--color-accent);">*</span></label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-user"></i>
-                                        <input type="text" name="name" placeholder="John Doe" required>
+                                        <input type="text" id="contactName" name="name" placeholder="John Doe" autocomplete="name" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Phone Number <span style="color: var(--color-accent);">*</span></label>
+                                    <label for="contactPhone">Phone Number <span style="color: var(--color-accent);">*</span></label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-phone"></i>
-                                        <input type="tel" name="phone" placeholder="+91 98765 43210" required>
+                                        <input type="tel" id="contactPhone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label>Email Address <span style="font-weight: 400; font-size: 0.8rem; color: var(--color-text-muted);">(Optional)</span></label>
+                                    <label for="contactEmail">Email Address <span style="font-weight: 400; font-size: 0.8rem; color: var(--color-text-muted);">(Optional)</span></label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-envelope"></i>
-                                        <input type="email" name="email" placeholder="john@example.com">
+                                        <input type="email" id="contactEmail" name="email" placeholder="john@example.com" autocomplete="email" inputmode="email">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Service Interested In</label>
+                                    <label for="contactService">Service Interested In</label>
                                     <div class="input-wrap">
                                         <i class="fa-solid fa-screwdriver-wrench"></i>
-                                        <select name="service">
+                                        <select id="contactService" name="service">
                                             <option value="Home Furniture">Home Furniture</option>
                                             <option value="Office Interiors">Office Interiors</option>
                                             <option value="Aluminium Work">Aluminium Fabrication</option>
@@ -166,10 +166,10 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Your Message</label>
+                                <label for="contactMessage">Your Message</label>
                                 <div class="input-wrap input-wrap--textarea">
                                     <i class="fa-solid fa-comment-dots"></i>
-                                    <textarea name="message" rows="4"
+                                    <textarea id="contactMessage" name="message" rows="4"
                                         placeholder="Tell us about your space and preferences..."></textarea>
                                 </div>
                             </div>
@@ -206,7 +206,8 @@
                 </div>
                 <div class="map-container">
                     <iframe src="https://www.google.com/maps?q=19.119570127681598,72.86842454295243&z=16&output=embed"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        title="Vishwa Solutions Workshop Location on Google Maps">
                     </iframe>
                 </div>
             </div>
