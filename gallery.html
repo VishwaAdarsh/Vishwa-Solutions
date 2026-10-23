@@ -13,27 +13,36 @@
     <meta property="og:image" content="assets/images/projects/residential-kitchen.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+        <!-- Fonts (Non-render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap">
+    </noscript>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons (Asynchronous) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.min.css">
 </head>
 
 <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
 
     <!-- Header -->
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Vishwa Solutions" class="logo-img"><span>Vishwa Solutions</span>
+                <img src="logo-sm.webp" onerror="this.onerror=null;this.src='logo.jpg'" alt="Vishwa Solutions" class="logo-img" width="80" height="80"><span>Vishwa Solutions</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNavigation">
                 <i class="fa-solid fa-bars"></i>
@@ -50,7 +59,8 @@
         </div>
     </header>
 
-    <!-- Page Header -->
+    <main id="mainContent">
+<!-- Page Header -->
     <section class="page-header gallery-header reveal">
         <div class="header-overlay"></div>
         <div class="container text-center">
@@ -66,6 +76,7 @@
     <!-- Gallery Section -->
     <section class="section">
         <div class="container">
+            <h2 class="sr-only">Project Portfolio & Filter Categories</h2>
             <!-- Filters -->
             <div class="filter-controls reveal">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -79,8 +90,7 @@
             <div class="gallery-masonry reveal">
                 <!-- Residential Items -->
                 <div class="gallery-card home reveal" data-category="home">
-                    <img src="assets/images/projects/residential-kitchen.jpg"
-                        alt="Modular Kitchen Design" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/residential-kitchen.webp" onerror="this.onerror=null;this.src='assets/images/projects/residential-kitchen.jpg'" alt="Modular Kitchen Design" width="600" height="400" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Residential</span>
@@ -90,8 +100,7 @@
                     </div>
                 </div>
                 <div class="gallery-card home reveal" data-category="home">
-                    <img src="assets/images/projects/residential-bedroom.jpg"
-                        alt="Master Bedroom Set" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/residential-bedroom.webp" onerror="this.onerror=null;this.src='assets/images/projects/residential-bedroom.jpg'" alt="Master Bedroom Interior" width="600" height="400" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Residential</span>
@@ -101,8 +110,7 @@
                     </div>
                 </div>
                 <div class="gallery-card home reveal" data-category="home">
-                    <img src="assets/images/projects/custom-wardrobe.jpg"
-                        alt="Custom Wardrobe and Storage" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/custom-wardrobe.webp" onerror="this.onerror=null;this.src='assets/images/projects/custom-wardrobe.jpg'" alt="Custom Built-in Wardrobe" width="600" height="900" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Residential</span>
@@ -112,8 +120,7 @@
                     </div>
                 </div>
                 <div class="gallery-card home reveal" data-category="home">
-                    <img src="assets/images/projects/residential-living.jpg"
-                        alt="Living Room Woodwork" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/residential-living.webp" onerror="this.onerror=null;this.src='assets/images/projects/residential-living.jpg'" alt="Living Room TV Unit & Partition" width="600" height="317" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Residential</span>
@@ -125,8 +132,7 @@
 
                 <!-- Commercial Items -->
                 <div class="gallery-card office reveal" data-category="office">
-                    <img src="assets/images/projects/office-workstation.jpg"
-                        alt="Office Workstation Setup" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/office-workstation.webp" onerror="this.onerror=null;this.src='assets/images/projects/office-workstation.jpg'" alt="Corporate Office Workstations" width="600" height="400" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Commercial</span>
@@ -136,8 +142,7 @@
                     </div>
                 </div>
                 <div class="gallery-card office reveal" data-category="office">
-                    <img src="assets/images/projects/office-conference.jpg"
-                        alt="Conference and Meeting Room" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/office-conference.webp" onerror="this.onerror=null;this.src='assets/images/projects/office-conference.jpg'" alt="Executive Conference Room Table" width="600" height="400" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Commercial</span>
@@ -149,8 +154,7 @@
 
                 <!-- Aluminium Fabrication Items -->
                 <div class="gallery-card aluminium reveal" data-category="aluminium">
-                    <img src="assets/images/projects/aluminium-window.jpg"
-                        alt="Aluminium Sliding Window" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/aluminium-window.webp" onerror="this.onerror=null;this.src='assets/images/projects/aluminium-window.jpg'" alt="Sliding Aluminium Window Fitting" width="600" height="408" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Fabrication</span>
@@ -160,8 +164,7 @@
                     </div>
                 </div>
                 <div class="gallery-card aluminium reveal" data-category="aluminium">
-                    <img src="assets/images/projects/aluminium-partition.jpg"
-                        alt="Aluminium Glass Partition" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/aluminium-partition.webp" onerror="this.onerror=null;this.src='assets/images/projects/aluminium-partition.jpg'" alt="Office Aluminium & Glass Partition" width="600" height="338" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Fabrication</span>
@@ -171,8 +174,7 @@
                     </div>
                 </div>
                 <div class="gallery-card aluminium reveal" data-category="aluminium">
-                    <img src="assets/images/projects/aluminium-door.jpg"
-                        alt="Aluminium Glazed Door" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/aluminium-door.webp" onerror="this.onerror=null;this.src='assets/images/projects/aluminium-door.jpg'" alt="Heavy-Duty Aluminium Commercial Door" width="600" height="900" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Fabrication</span>
@@ -184,8 +186,7 @@
 
                 <!-- Renovation Items -->
                 <div class="gallery-card renovation reveal" data-category="renovation">
-                    <img src="assets/images/projects/renovation-interior.jpg"
-                        alt="Interior Renovation Project" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/renovation-interior.webp" onerror="this.onerror=null;this.src='assets/images/projects/renovation-interior.jpg'" alt="Complete Flat Interior Renovation" width="600" height="400" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Renovation</span>
@@ -195,8 +196,7 @@
                     </div>
                 </div>
                 <div class="gallery-card renovation reveal" data-category="renovation">
-                    <img src="assets/images/projects/renovation-furniture.jpg"
-                        alt="Furniture Restoration and Polishing" loading="lazy" decoding="async">
+                    <img src="assets/images/projects/renovation-furniture.webp" onerror="this.onerror=null;this.src='assets/images/projects/renovation-furniture.jpg'" alt="Custom Wardrobe Restoration" width="600" height="899" loading="lazy" decoding="async">
                     <div class="gallery-card-overlay">
                         <div class="overlay-info">
                             <span class="category-tag">Renovation</span>
@@ -208,19 +208,19 @@
             </div>
         </div>
     </section>
-
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h4>Vishwa Solutions</h4>
+                <h3>Vishwa Solutions</h3>
                     <p style="color: #ccc; line-height: 1.6;">Your trusted partner for all carpentry and furniture
                         needs. Bringing quality craftsmanship to your home and office.</p>
                 </div>
                 <div class="footer-column">
-                    <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
@@ -229,7 +229,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Our Services</h4>
+                <h3>Our Services</h3>
                     <ul>
                         <li><a href="services.html#home">Home Furniture</a></li>
                         <li><a href="services.html#office">Office Interiors</a></li>
@@ -238,7 +238,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Contact Us</h4>
+                <h3>Contact Us</h3>
                     <ul>
                         <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> <a href="tel:+919819215853">+91 9819215853</a> / <a href="tel:+919773725281">+91 9773725281</a></li>
                         <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> <a href="https://wa.me/919819215853?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9819215853</a> / <a href="https://wa.me/919773725281?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9773725281</a></li>
@@ -278,10 +278,10 @@
 
     <div class="lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Image Preview">
         <button class="lightbox-close" aria-label="Close image preview"><i class="fa-solid fa-xmark"></i></button>
-        <img class="lightbox-img" src="" alt="View Project">
+        <img class="lightbox-img" id="lightboxImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3C/svg%3E" alt="Enlarged project preview" width="1200" height="800">
     </div>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.min.js" defer></script>
 </body>
 
 </html>

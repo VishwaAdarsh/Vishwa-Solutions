@@ -13,27 +13,36 @@
     <meta property="og:image" content="assets/images/projects/residential-living.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Fonts -->
+        <!-- Fonts (Non-render-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&display=swap">
+    </noscript>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icons (Asynchronous) -->
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.min.css">
 </head>
 
 <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+
 
     <!-- Header -->
     <header>
         <div class="container navbar">
             <a href="index.html" class="logo">
-                <img src="logo.jpg" alt="Vishwa Solutions" class="logo-img"><span>Vishwa Solutions</span>
+                <img src="logo-sm.webp" onerror="this.onerror=null;this.src='logo.jpg'" alt="Vishwa Solutions" class="logo-img" width="80" height="80"><span>Vishwa Solutions</span>
             </a>
             <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNavigation">
                 <i class="fa-solid fa-bars"></i>
@@ -50,7 +59,8 @@
         </div>
     </header>
 
-    <!-- Page Header -->
+    <main id="mainContent">
+<!-- Page Header -->
     <section class="page-header contact-header reveal">
         <div class="header-overlay"></div>
         <div class="container text-center">
@@ -213,18 +223,19 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h4>Vishwa Solutions</h4>
+                <h3>Vishwa Solutions</h3>
                     <p style="color: #ccc; line-height: 1.6;">Your trusted partner for all carpentry and furniture
                         needs. Bringing quality craftsmanship to your home and office.</p>
                 </div>
                 <div class="footer-column">
-                    <h4>Quick Links</h4>
+                <h3>Quick Links</h3>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
@@ -233,7 +244,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Our Services</h4>
+                <h3>Our Services</h3>
                     <ul>
                         <li><a href="services.html#home">Home Furniture</a></li>
                         <li><a href="services.html#office">Office Interiors</a></li>
@@ -242,7 +253,7 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h4>Contact Us</h4>
+                <h3>Contact Us</h3>
                     <ul>
                         <li><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> <a href="tel:+919819215853">+91 9819215853</a> / <a href="tel:+919773725281">+91 9773725281</a></li>
                         <li><i class="fa-brands fa-whatsapp" style="margin-right: 8px;"></i> <a href="https://wa.me/919819215853?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9819215853</a> / <a href="https://wa.me/919773725281?text=Hello%20Vishwa%20Solutions%2C%20I%20would%20like%20to%20enquire%20about%20furniture%2Finterior%20work." target="_blank" rel="noopener">+91 9773725281</a></li>
@@ -280,7 +291,7 @@
         </a>
     </aside>
 
-    <script src="scripts/main.js"></script>
+    <script src="scripts/main.min.js" defer></script>
 </body>
 
 </html>

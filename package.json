@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build": "echo Build complete",
+    "build": "node scripts/build.js",
     "test:smtp": "node scripts/test-smtp.js"
   },
   "dependencies": {
@@ -15,5 +15,8 @@
   },
   "keywords": [],
   "author": "Vishwa Solutions",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
 }
