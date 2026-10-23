@@ -77,6 +77,7 @@ body.dark {
    ========================================================================== */
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 *,
@@ -114,6 +115,8 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.4s ease, color 0.4s ease;
+    width: 100%;
+    min-width: 0;
 }
 
 a {
@@ -181,6 +184,7 @@ p {
    ========================================================================== */
 .container {
     width: 90%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -292,6 +296,7 @@ p {
    HEADER & NAVIGATION
    ========================================================================== */
 header {
+    overflow-x: clip;
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -455,9 +460,10 @@ header.scrolled .navbar {
     transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
     z-index: 1;
     overflow: hidden;
+    visibility: hidden;
 }
 
 .hero-slide.active {
@@ -465,12 +471,14 @@ header.scrolled .navbar {
     opacity: 1;
     pointer-events: auto;
     z-index: 3;
+    visibility: visible;
 }
 
 .hero-slide.fade-out {
     transform: translateX(-20%);
     opacity: 0;
     z-index: 2;
+    visibility: visible;
 }
 
 .hero-bg-image {
@@ -512,8 +520,8 @@ header.scrolled .navbar {
     position: absolute;
     top: 15%;
     left: 8%;
-    width: 450px;
-    height: 450px;
+    width: min(450px, 80vw);
+    height: min(450px, 80vw);
     background: radial-gradient(circle, var(--accent, var(--color-accent)) 0%, transparent 60%);
     opacity: 0.15;
     border-radius: 50%;
@@ -808,6 +816,8 @@ header.scrolled .navbar {
     border-radius: var(--radius-xl);
     z-index: -1;
     transform: translate(25px, 25px);
+    overflow: hidden;
+    pointer-events: none;
 }
 
 .hero-image:hover img {
@@ -1012,7 +1022,7 @@ header.scrolled .navbar {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
     gap: 40px;
     position: relative;
     z-index: 1;
@@ -1085,7 +1095,7 @@ header.scrolled .navbar {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 40px;
     margin-top: 60px;
 }
@@ -1204,7 +1214,7 @@ header.scrolled .navbar {
    ========================================================================== */
 .gallery-grid-preview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 30px;
     margin-top: 50px;
 }
@@ -1288,7 +1298,7 @@ header.scrolled .navbar {
 
 .work-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
     gap: 30px;
     margin-top: 60px;
     position: relative;
@@ -1611,6 +1621,8 @@ header.scrolled .navbar {
     z-index: 1;
     opacity: 0.2;
     transform: translate(-20px, 20px);
+    pointer-events: none;
+    overflow: hidden;
 }
 
 .story-content {
@@ -1671,7 +1683,7 @@ header.scrolled .navbar {
    ========================================================================== */
 .expertise-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 30px;
     margin-top: 50px;
 }
@@ -2104,7 +2116,7 @@ header.scrolled .navbar {
 
 .gallery-masonry {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 24px;
 }
 
@@ -2299,7 +2311,7 @@ footer {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: var(--space-xl);
     margin-bottom: var(--space-xl);
 }
@@ -2518,6 +2530,17 @@ body.lightbox-open {
    RESPONSIVE — 768px (Tablet Portrait & Standard Mobile)
    ========================================================================== */
 @media (max-width: 768px) {
+    /* Mobile Background Containment */
+    .hero-slide.active .hero-bg-image,
+    .hero-bg-image {
+        transform: none !important;
+    }
+
+    .cta-bg-animation {
+        animation: none !important;
+        transform: none !important;
+    }
+
     /* Base Container & Spacing */
     .container {
         width: 100%;
@@ -2609,17 +2632,17 @@ body.lightbox-open {
         flex-direction: column;
         padding: 20px var(--space-lg) calc(var(--space-xl) + 64px);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-        transform: translateX(100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 4px;
         align-items: stretch;
         z-index: 999;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        display: none;
     }
 
     .nav-links.active {
-        transform: translateX(0);
+        display: flex;
+        animation: mobileNavFade 0.25s ease-out forwards;
     }
 
     .nav-links a {
@@ -3196,6 +3219,58 @@ body.lightbox-open {
         padding: 14px;
         gap: 6px;
     }
+
+    /* Contain decorative elements that extend beyond parent */
+    .image-accent,
+    .accent-frame {
+        display: none;
+    }
+
+    /* Prevent long text strings from overflowing */
+    .footer-column,
+    .footer-column p,
+    .footer-column ul li {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    /* Map info bar padding reduction */
+    .map-info-bar {
+        padding: 20px 18px;
+    }
+
+    /* Contain CTA background animation */
+    .final-cta {
+        overflow: hidden;
+    }
+
+    /* Story image containment */
+    .story-image,
+    .image-stack {
+        overflow: hidden;
+    }
+
+    /* Hero badge containment */
+    .hero-image-badge {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Expertise card padding reduction */
+    .expertise-card {
+        padding: 24px 18px;
+    }
+
+    /* Premium quote overflow safety */
+    .premium-quote {
+        font-size: 1.05rem;
+        padding-left: 16px;
+    }
+
+    /* Service detail section padding */
+    .service-detail-section {
+        padding: 50px 0;
+    }
 }
 
 /* ==========================================================================
@@ -3235,6 +3310,35 @@ body.lightbox-open {
     .form-container {
         padding: 18px 12px;
     }
+
+    /* Tighter map info bar */
+    .map-info-bar {
+        padding: 16px 12px;
+    }
+
+    /* Service card tighter padding */
+    .service-card {
+        padding: 20px 14px;
+    }
+
+    /* CTA section tighter */
+    .final-cta h2 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+    }
+
+    .final-cta p {
+        font-size: 0.9rem;
+    }
+
+    /* Step card tighter */
+    .step-card {
+        padding: 28px 16px;
+    }
+
+    /* Testimonial card tighter */
+    .testimonial-card {
+        padding: 22px 14px;
+    }
 }
 
 /* ==========================================================================
@@ -3251,5 +3355,15 @@ body.lightbox-open {
     }
     .hero-slide {
         transition: opacity 0.2s ease !important;
+    }
+}
+@keyframes mobileNavFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
